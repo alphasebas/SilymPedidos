@@ -10,6 +10,16 @@ module.exports = {
                 callback({ array: null, id: null, success: true });
             });
     },
+    createUser: (connection, body, callback) => {
+        connection.query('INSERT INTO usuarios SET Usuario = ?,Password = ?, Tipo = ?',
+            [body.Usuario, body.Password, body.Tipo], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback({ array: null, id: null, success: true });
+            });
+    },
 
     updateFactura: (connection, body, callback) => {
         connection.query('UPDATE pedidos SET Estado = ? ,Factura = ? ,RCFactura  = current_timestamp() WHERE FolioInterno = ?',
@@ -34,6 +44,26 @@ module.exports = {
     updateCobranza: (connection, body, callback) => {
         connection.query('UPDATE pedidos SET Estado = ? ,FechaEntregado = ? ,ObservacionesCobranza  = ? ,RCCobranza = current_timestamp() ,TipoCobranza = ? WHERE FolioInterno = ?',
             [body.Estado, body.FechaEntregado, body.ObservacionesCobranza, body.TipoCobranza, body.FolioInterno], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback({ array: null, id: null, success: true });
+            });
+    },
+    updateUser: (connection, body, callback) => {
+        connection.query('UPDATE usuarios SET Password = ? ,Tipo = ? WHERE Usuario = ?',
+            [body.Password, body.Tipo, body.Usuario], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback({ array: null, id: null, success: true });
+            });
+    },
+    deleteUser: (connection, body, callback) => {
+        connection.query('DELETE FROM usuarios WHERE Usuario = ?',
+            [body.Usuario], (err, results) => {
                 if (err) {
                     callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                     return;
@@ -74,6 +104,15 @@ module.exports = {
             callback({ array: null, id: results || null, success: true });
         })
     },
+    getUsuarios: (connection, body, callback)=> {
+        connection.query('SELECT * FROM usuarios', (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback({ array: null, id: results || null, success: true });
+        })
+    }
 
 }
 
