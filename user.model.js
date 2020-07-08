@@ -105,7 +105,7 @@ module.exports = {
         })
     },
     getPendientes: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Pendiente"', (err, results) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Pendiente" || Estado = "ParcialFacturado" || Estado = "ParcialEmbarcado"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
@@ -115,6 +115,42 @@ module.exports = {
     },
     getUsuarios: (connection, body, callback)=> {
         connection.query('SELECT * FROM usuarios', (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback({ array: null, id: results || null, success: true });
+        })
+    },
+    getFacturado: (connection, body, callback) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Facturado" ', (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback({ array: null, id: results || null, success: true });
+        })
+    },
+    getEmbarcado: (connection, body, callback) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Embarcado"', (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback({ array: null, id: results || null, success: true });
+        })
+    },
+    getEntregado: (connection, body, callback) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Entregado"', (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback({ array: null, id: results || null, success: true });
+        })
+    },
+    getEnProceso: (connection, body, callback) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado != "Entregado"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;

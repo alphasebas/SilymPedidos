@@ -186,6 +186,50 @@ router.delete('/borraruser', [
         res.json(data);
     }))
 });
+router.get('/facturados', (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getFacturado(connection, body, (data => {
+        res.json(data);
+    }))
+});
+router.get('/embarcados', (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getEmbarcado(connection, body, (data => {
+        res.json(data);
+    }))
+});
+router.get('/entregados', (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getEntregado(connection, body, (data => {
+        res.json(data);
+    }))
+});
+router.get('/enproceso', (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getEnProceso(connection, body, (data => {
+        res.json(data);
+    }))
+});
 
 
 
