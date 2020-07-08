@@ -7,11 +7,15 @@ import { BdService } from 'src/app/services/bd.service';
   styleUrls: ['./pendientes.component.css']
 })
 export class PendientesComponent implements OnInit {
-
+  pendientes:any
   constructor(private bdService:BdService) { }
 
   ngOnInit(): void {
-    this.bdService.getPendientes().subscribe();
+    this.bdService.getPendientes().subscribe(data =>{
+      this.pendientes = data;
+      console.log(this.pendientes);
+    });
+
   }
 
 }
