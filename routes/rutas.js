@@ -193,7 +193,7 @@ router.get('/facturados', (req, res) => {
         return
     }
     let body = req.body;
-    user.getFacturado(connection, body, (data => {
+    user.getFacturados(connection, body, (data => {
         res.json(data);
     }))
 });
@@ -204,7 +204,7 @@ router.get('/embarcados', (req, res) => {
         return
     }
     let body = req.body;
-    user.getEmbarcado(connection, body, (data => {
+    user.getEmbarcados(connection, body, (data => {
         res.json(data);
     }))
 });
@@ -215,7 +215,7 @@ router.get('/entregados', (req, res) => {
         return
     }
     let body = req.body;
-    user.getEntregado(connection, body, (data => {
+    user.getEntregados(connection, body, (data => {
         res.json(data);
     }))
 });

@@ -79,7 +79,7 @@ module.exports = {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
             }
-            callback({ array: null, id: results || null, success: true });
+            callback( results );
         })
     },
 
@@ -90,7 +90,7 @@ module.exports = {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
             }
-            callback({ array: null, id: results || null, success: true });
+            callback( results );
         })
     },
 
@@ -101,7 +101,7 @@ module.exports = {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
             }
-            callback({ array: null, id: results || null, success: true });
+            callback( results );
         })
     },
     getPendientes: (connection, body, callback) => {
@@ -110,7 +110,7 @@ module.exports = {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
             }
-            callback({ array: null, id: results || null, success: true });
+            callback( results );
         })
     },
     getUsuarios: (connection, body, callback)=> {
@@ -119,34 +119,34 @@ module.exports = {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
             }
-            callback({ array: null, id: results || null, success: true });
+            callback( results );
         })
     },
-    getFacturado: (connection, body, callback) => {
+    getFacturados: (connection, body, callback) => {
         connection.query('SELECT * FROM pedidos WHERE Estado = "Facturado" ', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
             }
-            callback({ array: null, id: results || null, success: true });
+            callback( results );
         })
     },
-    getEmbarcado: (connection, body, callback) => {
+    getEmbarcados: (connection, body, callback) => {
         connection.query('SELECT * FROM pedidos WHERE Estado = "Embarcado"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
             }
-            callback({ array: null, id: results || null, success: true });
+            callback( results );
         })
     },
-    getEntregado: (connection, body, callback) => {
+    getEntregados: (connection, body, callback) => {
         connection.query('SELECT * FROM pedidos WHERE Estado = "Entregado"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
             }
-            callback({ array: null, id: results || null, success: true });
+            callback( results );
         })
     },
     getEnProceso: (connection, body, callback) => {
@@ -155,7 +155,7 @@ module.exports = {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
             }
-            callback({ array: null, id: results || null, success: true });
+            callback( results );
         })
     }
 

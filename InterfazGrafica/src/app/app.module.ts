@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PendientesComponent } from './components/pendientes/pendientes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    PendientesComponent
   ],
   imports: [
     BrowserModule,
