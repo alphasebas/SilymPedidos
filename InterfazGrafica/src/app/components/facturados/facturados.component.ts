@@ -7,11 +7,14 @@ import { BdService } from 'src/app/services/bd.service';
   styleUrls: ['./facturados.component.css']
 })
 export class FacturadosComponent implements OnInit {
-
+  facturados:any;
   constructor(private bdService:BdService) { }
 
   ngOnInit(): void {
-    this.bdService.getFacturados().subscribe();
+    this.bdService.getFacturados().subscribe(data =>{
+      this.facturados = data;
+    });
+    console.log(this.facturados);
   }
 
 }

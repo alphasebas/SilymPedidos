@@ -7,11 +7,14 @@ import { BdService } from 'src/app/services/bd.service';
   styleUrls: ['./entregados.component.css']
 })
 export class EntregadosComponent implements OnInit {
-
+  entregados:any;
   constructor(private bdService:BdService) { }
 
   ngOnInit(): void {
-    this.bdService.getEntregados().subscribe();
+    this.bdService.getEntregados().subscribe(data =>{
+      this.entregados = data;
+    });
+    console.log(this.entregados);
   }
 
 }

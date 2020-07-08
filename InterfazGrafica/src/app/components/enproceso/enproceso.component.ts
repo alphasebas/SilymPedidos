@@ -7,11 +7,14 @@ import { BdService } from 'src/app/services/bd.service';
   styleUrls: ['./enproceso.component.css']
 })
 export class EnprocesoComponent implements OnInit {
-
+  enProceso:any;
   constructor(private bdService:BdService) { }
 
   ngOnInit(): void {
-    this.bdService.getEnProceso().subscribe();
+    this.bdService.getEnProceso().subscribe(data =>{
+      this.enProceso = data;
+    });
+    console.log(this.enProceso);
   }
 
 }
