@@ -119,12 +119,8 @@ module.exports = {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
             }
-<<<<<<< HEAD
-            callback( results );
-=======
             //callback({ array: null, id: results || null, success: true });
             callback(results);
->>>>>>> 24f6bef9dd896544cd97c4a234b668cca6dd96a4
         })
     },
     getFacturados: (connection, body, callback) => {

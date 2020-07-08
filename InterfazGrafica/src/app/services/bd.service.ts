@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BdService {
-
+  usuario: string;
+  tipo: string;
   constructor(private httpClient: HttpClient) { }
 
   getUsuarios() {
@@ -30,6 +31,16 @@ export class BdService {
 
   getEnProceso() {
     return this.httpClient.get('http://localhost:3000/enproceso');
+  }
+  setUsuario(user: string, tipo: string) {
+    this.usuario = user;
+    this.tipo = tipo;
+  }
+  getUsuario() {
+    return this.usuario;
+  }
+  getTipoUsuario() {
+    return this.tipo;
   }
 
 

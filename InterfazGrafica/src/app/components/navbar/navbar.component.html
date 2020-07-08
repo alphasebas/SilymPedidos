@@ -12,9 +12,11 @@
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['facturados']">Facturados</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['embarcados']">Embarcados</a>
-        </li>
+          <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['embarcados']">Embarcados</a>
+          </li>
+        
+        
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['entregados']">Entregados</a>
         </li>
@@ -25,6 +27,7 @@
           <a class="nav-link" href="#">Buscar</a>
         </li>
       </ul>
-        <button class="btn btn-success my-2 my-sm-0" [routerLink]="['/login']" routerLinkActive="router-link-active" >Iniciar Sesion</button>
+      <button (click)="probar()">Prueba</button>
+        <button class="btn btn-success my-2 my-sm-0" [routerLink]="['login']">Iniciar Sesion</button>
     </div>
   </nav>

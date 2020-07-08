@@ -9,10 +9,11 @@
                 <div class="card-body">
                     <h5 class="card-title">Iniciar Sesión</h5>
                     <label for="">Usuario:</label><br>
-                    <input type="text"><br>
+                    <input type="text" [(ngModel)]="useri"><br>
                     <label for="">Contraseña:</label><br>
-                    <input type="password"><br><br>
-                    <a href="#" class="btn btn-primary">Ingresar</a>
+                    <input type="password" [(ngModel)]="passwordi"><br><br>
+                    <div class="badge badge-danger" *ngIf="error">No coincide la contraseña con el usuario</div><br><br>
+                    <button href="#" class="btn btn-primary" (click)="inicio()">Ingresar</button>
                 </div>
             </div>
         </div>

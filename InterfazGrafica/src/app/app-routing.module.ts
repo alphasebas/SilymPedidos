@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'embarcados', component: EmbarcadosComponent },
   { path: 'entregados', component: EntregadosComponent },
   { path: 'enproceso', component: EnprocesoComponent },
-  {path: '**', pathMatch: 'full', redirectTo: 'login'}
+  {path: '**', pathMatch: 'full', redirectTo: 'pendientes'}
 ];
 
 @NgModule({

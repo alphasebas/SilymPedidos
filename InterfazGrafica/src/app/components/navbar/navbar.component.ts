@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { LoginComponent } from './../login/login/login.component';
+import { BdService } from 'src/app/services/bd.service';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  constructor(private bdService: BdService) { }
 
   ngOnInit(): void {
+  }
+  probar() {
+    alert(this.bdService.getTipoUsuario());
   }
 
 }
