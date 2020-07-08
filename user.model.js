@@ -119,7 +119,8 @@ module.exports = {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
             }
-            callback({ array: null, id: results || null, success: true });
+            //callback({ array: null, id: results || null, success: true });
+            callback(results);
         })
     },
     getFacturado: (connection, body, callback) => {
