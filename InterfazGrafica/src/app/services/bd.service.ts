@@ -28,5 +28,9 @@ export class BdService {
     return this.httpClient.get('http://localhost:3000/entregados');
   }
 
+  getEnProceso() {
+    return this.httpClient.get('http://localhost:3000/enproceso');
+  }
+
 
 }

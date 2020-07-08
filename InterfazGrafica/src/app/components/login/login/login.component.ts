@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  usuarios: any;
   constructor(private bdService: BdService) { }
-
   ngOnInit(): void {
-    this.bdService.getUsuarios().subscribe();
+    this.bdService.getUsuarios().subscribe(data => {
+      this.usuarios = data;
+    });
   }
 
 }
