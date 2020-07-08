@@ -104,6 +104,15 @@ module.exports = {
             callback({ array: null, id: results || null, success: true });
         })
     },
+    getPendientes: (connection, body, callback) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Pendiente"', (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback({ array: null, id: results || null, success: true });
+        })
+    },
     getUsuarios: (connection, body, callback)=> {
         connection.query('SELECT * FROM usuarios', (err, results) => {
             if (err) {

@@ -132,6 +132,17 @@ router.get('/usuarios', (req, res) => {
         res.json(data);
     }))
 });
+router.get('/pendientes', (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getPendientes(connection, body, (data => {
+        res.json(data);
+    }))
+});
 router.post('/createuser', [
     body('Usuario').not().isEmpty().isString(),
     body('Password').not().isEmpty().isString(),
