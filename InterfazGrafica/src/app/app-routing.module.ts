@@ -1,3 +1,4 @@
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login/login.component';
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'embarcados', component: EmbarcadosComponent },
   { path: 'entregados', component: EntregadosComponent },
   { path: 'enproceso', component: EnprocesoComponent },
-  {path: '**', pathMatch: 'full', redirectTo: 'pendientes'}
+  { path: 'navbar', component: NavbarComponent },
+  
 ];
 
 @NgModule({

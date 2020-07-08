@@ -27,7 +27,9 @@ export class LoginComponent implements OnInit {
         this.bdService.setUsuario(this.useri, usuario.Tipo);
         this.Usuario = this.useri;
         this.Tipo = usuario.Tipo;
-        this.router.navigate(['pendientes']);
+        this.router.navigate(['/pendientes']).then(() => {
+          window.location.reload();
+        })
         break;
       }
     }
