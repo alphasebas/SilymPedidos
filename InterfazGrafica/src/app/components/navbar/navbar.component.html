@@ -9,26 +9,46 @@
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['/pendientes']">Pendientes<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['facturados']">Facturados</a>
-        </li>
+        <ng-container *ngIf="Tipo=='Facturacion' || Tipo=='Admin'">
+          <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['facturados']">Facturados</a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="Tipo=='Almacen' || Tipo=='Admin'">
           <li class="nav-item active">
             <a class="nav-link" [routerLink]="['embarcados']">Embarcados</a>
           </li>
-        
-        
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['entregados']">Entregados</a>
-        </li>
+        </ng-container>
+        <ng-container *ngIf="Tipo=='Cobranza' || Tipo=='Admin'">
+          <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['entregados']">Entregados</a>
+          </li>
+        </ng-container>
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['enproceso']">En Proceso</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="#">Buscar</a>
         </li>
+        <ng-container *ngIf="Tipo=='Admin'">
+          <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['login']">Usuarios</a>
+          </li>
+        </ng-container>
       </ul>
-      
-        <button class="btn btn-success my-2 my-sm-0" (click)="mostrar()">Iniciar Sesion</button>
+        <ng-container *ngIf="Usuario=='' else logout;">
+          <button class="btn btn-success my-2 my-sm-0" (click)="mostrar()">Iniciar Sesion</button>
+        </ng-container>
+        <ng-template #logout>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active mr-4">
+              {{Usuario}} - {{Tipo}}
+            </li>
+          </ul>
+          <button class="btn btn-danger my-2 my-sm-0">Cerrar Sesion</button>
+        </ng-template>
+        
+
     </div>
   </nav>
   <ng-container *ngIf="sesion">

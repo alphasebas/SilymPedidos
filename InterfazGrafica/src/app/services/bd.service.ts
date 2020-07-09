@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +42,16 @@ export class BdService {
   getTipoUsuario() {
     return this.tipo;
   }
-
+  createUser(usuario: string, password: string, tipo: string) {
+    const body = new HttpParams()
+    .set('Usuario', usuario)
+    .set('Password', password)
+    .set('Tipo', tipo);
+    return this.httpClient.post('http://localhost:3000/createuser', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
 
 }

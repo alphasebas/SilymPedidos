@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'entregados', component: EntregadosComponent },
   { path: 'enproceso', component: EnprocesoComponent },
   { path: 'navbar', component: NavbarComponent },
-  
+  {path: '**', pathMatch: 'full', redirectTo: '#'}
 ];
 
 @NgModule({

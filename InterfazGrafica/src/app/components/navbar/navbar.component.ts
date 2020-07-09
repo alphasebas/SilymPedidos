@@ -16,8 +16,8 @@ export class NavbarComponent implements OnInit {
   useri: string;
   passwordi: string;
   error: boolean;
-  Usuario: string;
-  Tipo: string;
+  Usuario = '';
+  Tipo = '';
   constructor(private bdService: BdService, private router: Router) { }
 
   ngOnInit(): void {
