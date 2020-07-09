@@ -1,8 +1,7 @@
 import { Router } from '@angular/router';
-import { LoginComponent } from './../login/login/login.component';
 import { BdService } from 'src/app/services/bd.service';
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-navbar',

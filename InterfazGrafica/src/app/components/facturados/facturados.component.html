@@ -1,1 +1,22 @@
-<p>facturados works!</p>
+<div class="table-responsive">
+  <table class="table table-striped table-light table-hover table-sm border" >
+    <thead class="thead-dark" >
+      <tr >
+        <th scope="col">Folio Interno</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Factura</th>
+        <th scope="col">Registro de Captura de Facturacion</th>
+      </tr>
+    </thead>
+    <tbody style="border: 1px solid black !important;  border-collapse: collapse !important;">
+      <tr *ngFor="let dato of facturados" >
+        <th scope="row">{{dato.FolioInterno}}</th>
+        <td>{{dato.Cliente}}</td>
+        <td class="table-warning">{{dato.Estado}}</td>
+        <td>{{dato.Factura}}</td>
+        <td>{{dato.RCFactura | date : 'short'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

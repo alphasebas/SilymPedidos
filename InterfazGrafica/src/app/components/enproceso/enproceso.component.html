@@ -1,1 +1,29 @@
-<p>enproceso works!</p>
+<div class="table-responsive">
+  <table class="table table-striped table-light table-hover table-sm border" >
+    <thead class="thead-dark" >
+      <tr >
+        <th scope="col">Folio Interno</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Fecha de Llegada</th>
+        <th scope="col">Orden de Compra</th>
+        <th scope="col">Fecha Deseada</th>
+        <th scope="col">Observaciones de Ventas</th>
+        <th scope="col">Registro de Captura de Ventas</th>
+      </tr>
+    </thead>
+    <tbody style="border: 1px solid black !important;  border-collapse: collapse !important;">
+      <tr *ngFor="let dato of enProceso" >
+        <th scope="row">{{dato.FolioInterno}}</th>
+        <td>{{dato.Cliente}}</td>
+        <td class="table-warning">{{dato.Estado}}</td>
+        <td>{{dato.FechaLlegada}}</td>
+        <td>{{dato.OC}}</td>
+        <td>{{dato.FechaDeseada}}</td>
+        <td>{{dato.ObservacionesVentas}}</td>
+        <td>{{dato.RCVentas}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

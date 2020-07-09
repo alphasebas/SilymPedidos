@@ -17,11 +17,11 @@
         <th scope="row">{{dato.FolioInterno}}</th>
         <td>{{dato.Cliente}}</td>
         <td class="table-warning">{{dato.Estado}}</td>
-        <td>{{dato.FechaLlegada}}</td>
+        <td>{{dato.FechaLlegada | date : 'short'}}</td>
         <td>{{dato.OC}}</td>
-        <td>{{dato.FechaDeseada}}</td>
+        <td>{{dato.FechaDeseada | date : 'short'}}</td>
         <td>{{dato.ObservacionesVentas}}</td>
-        <td>{{dato.RCVentas}}</td>
+        <td>{{dato.RCVentas | date : 'short'}}</td>
       </tr>
     </tbody>
   </table>

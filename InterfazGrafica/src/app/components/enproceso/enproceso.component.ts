@@ -13,8 +13,9 @@ export class EnprocesoComponent implements OnInit {
   ngOnInit(): void {
     this.bdService.getEnProceso().subscribe(data =>{
       this.enProceso = data;
+      console.log(this.enProceso);
     });
-    console.log(this.enProceso);
+
   }
 
 }

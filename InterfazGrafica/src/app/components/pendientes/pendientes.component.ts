@@ -13,7 +13,7 @@ export class PendientesComponent implements OnInit {
   ngOnInit(): void {
     this.bdService.getPendientes().subscribe(data =>{
       this.pendientes = data;
-      console.log(this.pendientes);
+
     });
 
   }

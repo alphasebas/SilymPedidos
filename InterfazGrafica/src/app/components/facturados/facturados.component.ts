@@ -13,8 +13,9 @@ export class FacturadosComponent implements OnInit {
   ngOnInit(): void {
     this.bdService.getFacturados().subscribe(data =>{
       this.facturados = data;
+      console.log(this.facturados);
     });
-    console.log(this.facturados);
+
   }
 
 }
