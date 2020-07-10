@@ -28,6 +28,11 @@
           <a class="nav-link" [routerLink]="['crearpedidos']">Crear Pedido</a>
         </li>
       </ng-container>
+      <ng-container *ngIf="Tipo == 'Cobranza' || Tipo == 'Admin'">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['autorizacion']">Por Autorizar</a>
+        </li>
+      </ng-container>
       <ng-container *ngIf="Tipo == 'Facturacion' || Tipo == 'Admin'">
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['facturados']">Por Facturar</a>

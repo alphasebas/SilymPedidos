@@ -1,0 +1,38 @@
+<div class="table-responsive">
+  <table class="table table-striped table-light table-hover table-sm border" >
+    <thead class="thead-dark" >
+      <tr >
+        <th scope="col">Folio Interno</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Fecha de Llegada</th>
+        <th scope="col">Orden de Compra</th>
+        <th scope="col">Fecha Deseada</th>
+        <th scope="col">Observaciones de Ventas</th>
+        <th scope="col">Autorizacion</th>
+      </tr>
+    </thead>
+    <tbody style="border: 1px solid black !important;  border-collapse: collapse !important;">
+      <tr *ngFor="let dato of pendientes" >
+        <th scope="row">{{dato.FolioInterno}}</th>
+        <td>{{dato.Cliente}}</td>
+        <td class="table-warning">{{dato.Estado}}</td>
+        <td>{{dato.FechaLlegada | date : 'short'}}</td>
+        <td>{{dato.OC}}</td>
+        <td>{{dato.FechaDeseada | date : 'shortDate'}}</td>
+        <td>{{dato.ObservacionesVentas}}</td>
+        <td>
+          <ng-container *ngIf="botones">
+            <button class="btn btn-success" (click)="autorizado(dato.FolioInterno)">Autorizar</button>
+          <button class="btn btn-danger" (click)="noAutorizado(dato.FolioInterno)">No Autorizar</button>
+          </ng-container>
+          <ng-container *ngIf="!botones">
+            <p>{{estadoAuth}}</p>
+          </ng-container>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
