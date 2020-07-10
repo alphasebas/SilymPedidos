@@ -8,7 +8,7 @@ router.post('/ventas', [
 
     body('Cliente').not().isEmpty().isString(),
     body('FechaLlegada').not().isEmpty().isString(),
-    body('OC').not().isEmpty().isString(),
+    body('OC'),
     body('FechaDeseada').not().isEmpty().isString(),
     body('ObservacionesVentas'),
 

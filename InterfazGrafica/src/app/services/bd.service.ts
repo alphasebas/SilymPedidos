@@ -9,6 +9,20 @@ export class BdService {
   tipo: string;
   constructor(private httpClient: HttpClient) { }
 
+  crearPedido(cliente: string, fechallegada: string, oc: string, fechadeseada: string, observaciones: string) {
+    const body = new HttpParams()
+    .set('Cliente', cliente)
+    .set('FechaLlegada', fechallegada)
+    .set('OC', oc)
+    .set('FechaDeseada', fechadeseada)
+    .set('ObservacionesVentas', observaciones);
+    return this.httpClient.post('http://localhost:3000/ventas', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+
   getUsuarios() {
     return this.httpClient.get('http://localhost:3000/usuarios');
   }
