@@ -8,11 +8,13 @@ import { FacturadosComponent } from './components/facturados/facturados.componen
 import { EmbarcadosComponent } from './components/embarcados/embarcados.component';
 import { EntregadosComponent } from './components/entregados/entregados.component';
 import { EnprocesoComponent } from './components/enproceso/enproceso.component';
+import { AutorizarComponent } from './components/autorizar/autorizar.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'pendientes', component: PendientesComponent },
+  { path: 'autorizacion', component: AutorizarComponent },
   { path: 'crearpedidos', component: CrearpedidoComponent },
   { path: 'facturados', component: FacturadosComponent },
   { path: 'embarcados', component: EmbarcadosComponent },

@@ -158,6 +158,16 @@ module.exports = {
             }
             callback( results );
         })
+    },
+    autorizacion: (connection, body, callback) => {
+        connection.query('UPDATE pedidos SET Estado = ? WHERE FolioInterno = ?',
+            [body.Estado, body.FolioInterno], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback({ array: null, id: null, success: true });
+            });
     }
 
 }
