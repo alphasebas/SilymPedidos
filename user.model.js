@@ -123,8 +123,8 @@ module.exports = {
             callback(results);
         })
     },
-    getFacturados: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Facturado" ', (err, results) => {
+    getporFacturar: (connection, body, callback) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Autorizado" ', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;

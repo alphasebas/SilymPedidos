@@ -186,14 +186,14 @@ router.post('/borraruser', [
         res.json(data);
     }))
 });
-router.get('/facturados', (req, res) => {
+router.get('/porfacturar', (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         res.json({ success: false, err: JSON.stringify(errors) })
         return
     }
     let body = req.body;
-    user.getFacturados(connection, body, (data => {
+    user.getporFacturar(connection, body, (data => {
         res.json(data);
     }))
 });

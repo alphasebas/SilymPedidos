@@ -31,8 +31,8 @@ export class BdService {
     return this.httpClient.get('http://localhost:3000/pendientes');
   }
 
-  getFacturados() {
-    return this.httpClient.get('http://localhost:3000/facturados');
+  getporFacturar() {
+    return this.httpClient.get('http://localhost:3000/porfacturar');
   }
 
   getEmbarcados() {

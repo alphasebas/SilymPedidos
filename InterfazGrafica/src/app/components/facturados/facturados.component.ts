@@ -11,11 +11,13 @@ export class FacturadosComponent implements OnInit {
   constructor(private bdService:BdService) { }
 
   ngOnInit(): void {
-    this.bdService.getFacturados().subscribe(data =>{
+    this.bdService.getporFacturar().subscribe(data =>{
       this.facturados = data;
-      console.log(this.facturados);
     });
 
+  }
+  prueba(valor: string) {
+    console.log(valor);
   }
 
 }

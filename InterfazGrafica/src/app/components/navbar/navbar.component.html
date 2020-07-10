@@ -23,14 +23,14 @@
         <a class="nav-link" [routerLink]="['/pendientes']"
           >Pendientes<span class="sr-only">(current)</span></a>
       </li>
-      <ng-container *ngIf="Tipo == 'Ventas' || Tipo == 'Admin'">
+      <ng-container *ngIf="Tipo == 'Ventas' || Tipo == 'Admin' || Tipo == 'Facturacion'">
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['crearpedidos']">Crear Pedido</a>
         </li>
       </ng-container>
       <ng-container *ngIf="Tipo == 'Facturacion' || Tipo == 'Admin'">
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['facturados']">Facturados</a>
+          <a class="nav-link" [routerLink]="['facturados']">Por Facturar</a>
         </li>
       </ng-container>
       <ng-container *ngIf="Tipo == 'Almacen' || Tipo == 'Admin'">
