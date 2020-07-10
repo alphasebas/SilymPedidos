@@ -16,8 +16,6 @@ export class CrearpedidoComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    const temp = new Date().toISOString().slice(0, 16);´
-    console.log(temp);
   }
 
 }
