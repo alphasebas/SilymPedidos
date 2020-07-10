@@ -92,15 +92,27 @@
         </div>
         <div class="modal-body">
           <label for="">Usuario:</label><br />
-          <input type="text" [(ngModel)]="useri" /><br />
+          <input type="text" [(ngModel)]="useri" (keyup)="checkUsuario()"/>
+          <ng-container *ngIf="Usr">
+           <i class="fas fa-check " style="color: rgb(6, 151, 26); "></i>
+          </ng-container>
+          <ng-container *ngIf="!Usr">
+           <i class="fas fa-times " style="color: red; "></i>
+          </ng-container>
+          <br />
           <label for="">Contraseña:</label><br />
-          <input type="password" [(ngModel)]="passwordi" /><br /><br />
-          <div class="badge badge-danger" *ngIf="error">
-            No coincide la contraseña con el usuario
-          </div>
+          <input type="password" [(ngModel)]="passwordi" (keyup)="checkPassword()" />
+          <ng-container *ngIf="Pssw">
+            <i class="fas fa-check " style="color: rgb(6, 151, 26); "></i>
+           </ng-container>
+           <ng-container *ngIf="!Pssw">
+            <i class="fas fa-times " style="color: red; "></i>
+           </ng-container>
+          <br /><br />
+
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary" data-dismiss="modal" (click)="inicio()">Ingresar</button>
+          <button class="btn btn-primary" data-dismiss="modal" [disabled]="!Pssw" (click)="inicio()">Iniciar Sesion</button>
         </div>
       </div>
     </div>

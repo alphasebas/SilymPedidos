@@ -17,6 +17,9 @@ export class NavbarComponent implements OnInit {
   error: boolean;
   Usuario = '';
   Tipo = '';
+  Usr:boolean;
+  Pssw:boolean=false;
+  verificador:boolean;
   constructor(private bdService: BdService, private router: Router) { }
 
   ngOnInit(): void {
@@ -27,6 +30,25 @@ export class NavbarComponent implements OnInit {
   mostrar() {
     this.sesion = true;
   }
+  checkUsuario(){
+    for (const usuario of this.usuarios) {
+      if(usuario.Usuario === this.useri){
+         this.Usr = true;
+      }else{
+        this.Usr = false;
+      }
+    }
+  }
+  checkPassword(){
+    for (const usuario of this.usuarios) {
+      if(usuario.Usuario === this.useri && usuario.Password === this.passwordi){
+         this.Pssw = true;
+
+      }else{
+        this.Pssw = false;
+      }
+    }
+  }
   inicio() {
     for (const usuario of this.usuarios) {
       if (usuario.Usuario === this.useri && usuario.Password === this.passwordi) {
@@ -34,7 +56,6 @@ export class NavbarComponent implements OnInit {
         this.Usuario = this.useri;
         this.Tipo = usuario.Tipo;
         this.sesion = false;
-        this.router.navigate(['pendientes']);
         break;
       } else {
         this.error = true;

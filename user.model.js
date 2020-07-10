@@ -1,7 +1,7 @@
 module.exports = {
 
     create: (connection, body, callback) => {
-        connection.query('INSERT INTO pedidos SET Cliente = ?,Estado = "Pendiente", FechaLlegada = ?,OC = ?, FechaDeseada = ?, ObservacionesVentas = ?,RCVentas = current_timestamp()',
+        connection.query('INSERT INTO pedidos SET Cliente = ?,Estado = "PendienteAutorizar", FechaLlegada = ?,OC = ?, FechaDeseada = ?, ObservacionesVentas = ?,RCVentas = current_timestamp()',
             [body.Cliente, body.FechaLlegada, body.OC, body.FechaDeseada, body.ObservacionesVentas], (err, results) => {
                 if (err) {
                     callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
@@ -105,7 +105,7 @@ module.exports = {
         })
     },
     getPendientes: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Pendiente" || Estado = "ParcialFacturado" || Estado = "ParcialEmbarcado"', (err, results) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "PendienteAutorizar" || Estado = "ParcialFacturado" || Estado = "ParcialEmbarcado"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
