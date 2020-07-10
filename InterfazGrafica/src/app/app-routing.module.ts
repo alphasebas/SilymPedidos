@@ -1,3 +1,4 @@
+import { CrearpedidoComponent } from './components/crearpedido/crearpedido.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,6 +13,7 @@ import { EnprocesoComponent } from './components/enproceso/enproceso.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'pendientes', component: PendientesComponent },
+  { path: 'crearpedidos', component: CrearpedidoComponent },
   { path: 'facturados', component: FacturadosComponent },
   { path: 'embarcados', component: EmbarcadosComponent },
   { path: 'entregados', component: EntregadosComponent },

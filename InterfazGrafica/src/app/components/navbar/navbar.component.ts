@@ -36,11 +36,16 @@ export class NavbarComponent implements OnInit {
         this.sesion = false;
         this.router.navigate(['pendientes']);
         break;
+      } else {
+        this.error = true;
       }
     }
-    this.error = true;
     this.useri = '';
     this.passwordi = '';
+  }
+  logoutf() {
+    this.router.navigate(['pendientes']);
+    window.location.reload();
   }
 
 }

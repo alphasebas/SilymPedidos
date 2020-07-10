@@ -21,9 +21,13 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" [routerLink]="['/pendientes']"
-          >Pendientes<span class="sr-only">(current)</span></a
-        >
+          >Pendientes<span class="sr-only">(current)</span></a>
       </li>
+      <ng-container *ngIf="Tipo == 'Ventas' || Tipo == 'Admin'">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['crearpedidos']">Crear Pedido</a>
+        </li>
+      </ng-container>
       <ng-container *ngIf="Tipo == 'Facturacion' || Tipo == 'Admin'">
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['facturados']">Facturados</a>
@@ -65,7 +69,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active mr-4">{{ Usuario }} - {{ Tipo }}</li>
       </ul>
-      <button class="btn btn-danger my-2 my-sm-0">Cerrar Sesion</button>
+      <button class="btn btn-danger my-2 my-sm-0" (click)="logoutf()">Cerrar Sesion</button>
     </ng-template>
   </div>
 </nav>

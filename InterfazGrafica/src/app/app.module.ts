@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { FacturadosComponent } from './components/facturados/facturados.componen
 import { EmbarcadosComponent } from './components/embarcados/embarcados.component';
 import { EntregadosComponent } from './components/entregados/entregados.component';
 import { EnprocesoComponent } from './components/enproceso/enproceso.component';
+import { CrearpedidoComponent } from './components/crearpedido/crearpedido.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,15 @@ import { EnprocesoComponent } from './components/enproceso/enproceso.component';
     FacturadosComponent,
     EmbarcadosComponent,
     EntregadosComponent,
-    EnprocesoComponent
+    EnprocesoComponent,
+    CrearpedidoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

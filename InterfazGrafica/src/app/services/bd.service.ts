@@ -53,5 +53,25 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
+  updateUser(usuario: string, password: string, tipo: string) {
+    const body = new HttpParams()
+    .set('Usuario', usuario)
+    .set('Password', password)
+    .set('Tipo', tipo);
+    return this.httpClient.put('http://localhost:3000/edituser', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+  deleteUser(usuario: string) {
+    const body = new HttpParams()
+    .set('Usuario', usuario);
+    return this.httpClient.post('http://localhost:3000/borraruser', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
 
 }

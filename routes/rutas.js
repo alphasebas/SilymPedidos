@@ -173,7 +173,7 @@ router.put('/edituser', [
         res.json(data);
     }))
 });
-router.delete('/borraruser', [
+router.post('/borraruser', [
     body('Usuario').not().isEmpty().isString(),
 ], (req, res) => {
     const errors = validationResult(req);
