@@ -9,6 +9,7 @@
         <th scope="col">Orden de Compra</th>
         <th scope="col">Fecha Deseada</th>
         <th scope="col">Observaciones de Ventas</th>
+        <th scope="col">RC de Ventas</th>
         <th scope="col">Autorizacion</th>
       </tr>
     </thead>
@@ -21,6 +22,7 @@
         <td>{{dato.OC}}</td>
         <td>{{dato.FechaDeseada | date : 'shortDate'}}</td>
         <td>{{dato.ObservacionesVentas}}</td>
+        <td>{{dato.RCVentas}}</td>
         <td>
           <ng-container *ngIf="botones">
             <button class="btn btn-success" (click)="autorizado(dato.FolioInterno)">Autorizar</button>

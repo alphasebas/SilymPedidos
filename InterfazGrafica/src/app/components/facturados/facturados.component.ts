@@ -8,16 +8,26 @@ import { BdService } from 'src/app/services/bd.service';
 })
 export class FacturadosComponent implements OnInit {
   facturados:any;
-  constructor(private bdService:BdService) { }
+  constructor(private bdService: BdService) { }
 
   ngOnInit(): void {
-    this.bdService.getporFacturar().subscribe(data =>{
-      this.facturados = data;
-    });
+    this.actualizar();
 
   }
-  prueba(valor: string) {
-    console.log(valor);
+  facturar(valor: string, folio: string) {
+    this.bdService.facturar(folio, valor, 'Facturado').subscribe(data => {
+      this.actualizar();
+    });
+  }
+  parcial(valor: string, folio: string) {
+    this.bdService.facturar(folio, valor, 'ParcialFacturado').subscribe(data => {
+      this.actualizar();
+    });
+  }
+  actualizar() {
+    this.bdService.getporFacturar().subscribe(data => {
+      this.facturados = data;
+    });
   }
 
 }

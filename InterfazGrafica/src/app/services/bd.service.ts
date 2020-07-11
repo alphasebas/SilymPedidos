@@ -23,6 +23,27 @@ export class BdService {
     });
   }
 
+  autorizacion(estadoAuth:string, folio:string){
+    const body = new HttpParams()
+    .set('Estado', estadoAuth)
+    .set('FolioInterno', folio);
+    return this.httpClient.post('http://localhost:3000/autorizacion', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+  facturar(folio: string, factura: string, estado: string) {
+    const body = new HttpParams()
+    .set('FolioInterno', folio)
+    .set('Factura', factura)
+    .set('Estado', estado);
+    return this.httpClient.put('http://localhost:3000/factura', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
   getUsuarios() {
     return this.httpClient.get('http://localhost:3000/usuarios');
   }
@@ -35,8 +56,11 @@ export class BdService {
     return this.httpClient.get('http://localhost:3000/porfacturar');
   }
 
-  getEmbarcados() {
-    return this.httpClient.get('http://localhost:3000/embarcados');
+  getporEmbarcar() {
+    return this.httpClient.get('http://localhost:3000/porembarcar');
+  }
+  getporAutorizar() {
+    return this.httpClient.get('http://localhost:3000/porautorizar');
   }
 
   getEntregados() {
@@ -45,16 +69,6 @@ export class BdService {
 
   getEnProceso() {
     return this.httpClient.get('http://localhost:3000/enproceso');
-  }
-  autorizacion(estadoAuth:string, folio:string){
-    const body = new HttpParams()
-    .set('Estado', estadoAuth)
-    .set('FolioInterno', folio)
-    return this.httpClient.post('http://localhost:3000/autorizacion', body.toString(),
-    {
-    headers: new HttpHeaders()
-    .set('Content-Type', 'application/x-www-form-urlencoded')
-    });
   }
   setUsuario(user: string, tipo: string) {
     this.usuario = user;

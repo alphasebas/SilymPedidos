@@ -11,10 +11,9 @@ export class EmbarcadosComponent implements OnInit {
   constructor(private bdService:BdService) { }
 
   ngOnInit(): void {
-    this.bdService.getEmbarcados().subscribe(data =>{
+    this.bdService.getporEmbarcar().subscribe(data => {
       this.embarcados = data;
     });
-    console.log(this.embarcados);
   }
 
 }

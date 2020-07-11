@@ -34,6 +34,7 @@ export class NavbarComponent implements OnInit {
     for (const usuario of this.usuarios) {
       if(usuario.Usuario === this.useri){
          this.Usr = true;
+         break;
       }else{
         this.Usr = false;
       }
@@ -43,7 +44,7 @@ export class NavbarComponent implements OnInit {
     for (const usuario of this.usuarios) {
       if(usuario.Usuario === this.useri && usuario.Password === this.passwordi){
          this.Pssw = true;
-
+        break;
       }else{
         this.Pssw = false;
       }

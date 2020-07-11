@@ -15,7 +15,7 @@ export class AutorizarComponent implements OnInit {
   constructor(private bdService:BdService) { }
 
   ngOnInit(): void {
-    this.bdService.getPendientes().subscribe(data =>{
+    this.bdService.getporAutorizar().subscribe(data =>{
       this.pendientes = data;
 
     });
@@ -41,7 +41,7 @@ export class AutorizarComponent implements OnInit {
     })
   }
   actualizar(){
-    this.bdService.getPendientes().subscribe(data =>{
+    this.bdService.getporAutorizar().subscribe(data =>{
       this.pendientes = data;
 
     });

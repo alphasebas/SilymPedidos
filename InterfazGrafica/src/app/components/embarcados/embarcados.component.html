@@ -1,1 +1,41 @@
-<p>embarcados works!</p>
+<div class="table-responsive">
+    <table class="table table-striped table-light table-hover table-sm border" >
+      <thead class="thead-dark" >
+        <tr >
+          <th scope="col">FI</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Llegada</th>
+          <th scope="col">Fecha Deseada</th>
+          <th scope="col">Obs Ventas</th>
+          <th scope="col">RC Facturado</th>
+          <th scope="col">Factura</th>
+          <th scope="col">Surtió</th>
+          <th scope="col">Obs Almacen</th>
+          <th scope="col">FechaEmb</th>
+          <th scope="col">Chofer</th>
+          <th scope="col">Almacen</th>
+        </tr>
+      </thead>
+      <tbody style="border: 1px solid black !important;  border-collapse: collapse !important;">
+        <tr *ngFor="let dato of embarcados, let i=index" >
+          <th scope="row">{{dato.FolioInterno}}</th>
+          <td>{{dato.Cliente}}</td>
+          <td class="table-warning">{{dato.Estado}}</td>
+          <td>{{dato.FechaLlegada | date : 'short'}}</td>
+          <td>{{dato.FechaDeseada | date : 'shortDate'}}</td>
+          <td>{{dato.ObservacionesVentas}}</td>
+          <td>{{dato.RCFactura | date : 'short'}}</td>
+          <td>{{dato.Factura}}</td>
+          <td><input type="text" #surtidor value="{{dato.Surtidor}}" style="width: 80px;"></td>
+          <td><textarea name="obs" cols="15" rows="2"></textarea></td>
+          <td><input type="datetime-local" style="width: 50px;"></td>
+          <td><input type="text" #chofer style="width: 80px;"></td>
+          <td><button class="btn btn-info mb-1">Surtido</button><br>
+              <button class="btn btn-success mb-1">Embarcado</button><br>
+              <button class="btn btn-warning">Parcial Embarcado</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

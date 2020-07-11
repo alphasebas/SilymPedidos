@@ -158,6 +158,17 @@ router.get('/pendientes', (req, res) => {
         res.json(data);
     }))
 });
+router.get('/porautorizar', (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getporAutorizar(connection, body, (data => {
+        res.json(data);
+    }))
+});
 router.post('/createuser', [
     body('Usuario').not().isEmpty().isString(),
     body('Password').not().isEmpty().isString(),
@@ -212,14 +223,14 @@ router.get('/porfacturar', (req, res) => {
         res.json(data);
     }))
 });
-router.get('/embarcados', (req, res) => {
+router.get('/porembarcar', (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         res.json({ success: false, err: JSON.stringify(errors) })
         return
     }
     let body = req.body;
-    user.getEmbarcados(connection, body, (data => {
+    user.getporEmbarcar(connection, body, (data => {
         res.json(data);
     }))
 });
