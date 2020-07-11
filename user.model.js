@@ -151,7 +151,7 @@ module.exports = {
         })
     },
     getEntregados: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Entregado"', (err, results) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Embarcado"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;

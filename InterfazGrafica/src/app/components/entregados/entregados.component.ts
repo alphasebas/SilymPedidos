@@ -7,14 +7,25 @@ import { BdService } from 'src/app/services/bd.service';
   styleUrls: ['./entregados.component.css']
 })
 export class EntregadosComponent implements OnInit {
-  entregados:any;
+  embarcados:any;
+  botones:boolean;
   constructor(private bdService:BdService) { }
 
   ngOnInit(): void {
     this.bdService.getEntregados().subscribe(data =>{
-      this.entregados = data;
+      this.embarcados = data;
+      console.log(this.embarcados);
     });
-    console.log(this.entregados);
+
+  }
+  efectivo(folio:any){
+
+  }
+  factura(folio:any){
+
+  }
+  contraRecibo(folio:any){
+
   }
 
 }
