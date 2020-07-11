@@ -17,6 +17,7 @@ export class AutorizarComponent implements OnInit {
   ngOnInit(): void {
     this.bdService.getporAutorizar().subscribe(data =>{
       this.pendientes = data;
+      console.log(data);
 
     });
 
@@ -42,6 +43,7 @@ export class AutorizarComponent implements OnInit {
   }
   actualizar(){
     this.bdService.getporAutorizar().subscribe(data =>{
+      
       this.pendientes = data;
 
     });

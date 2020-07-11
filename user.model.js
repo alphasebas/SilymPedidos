@@ -114,7 +114,7 @@ module.exports = {
         })
     },
     getporAutorizar: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Pendiente" ', (err, results) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "PendienteAutorizar" ', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
