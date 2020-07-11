@@ -169,7 +169,7 @@ module.exports = {
         })
     },
     autorizacion: (connection, body, callback) => {
-        connection.query('UPDATE pedidos SET Estado = ?, RCAutirizado = current_timestamp()  WHERE FolioInterno = ?',
+        connection.query('UPDATE pedidos SET Estado = ?, RCAutorizado = current_timestamp()  WHERE FolioInterno = ?',
             [body.Estado, body.FolioInterno], (err, results) => {
                 if (err) {
                     callback({ array: null, id: null, success: false, err: JSON.stringify(err) });

@@ -22,7 +22,7 @@
         <td>{{dato.OC}}</td>
         <td>{{dato.FechaDeseada | date : 'shortDate'}}</td>
         <td>{{dato.ObservacionesVentas}}</td>
-        <td>{{dato.RCVentas}}</td>
+        <td>{{dato.RCVentas | date : 'short'}}</td>
         <td>
           <ng-container *ngIf="botones">
             <button class="btn btn-success" (click)="autorizado(dato.FolioInterno)">Autorizar</button>

@@ -38,6 +38,7 @@ export class AutorizarComponent implements OnInit {
 
     this.botones=false
     this.bdService.autorizacion(this.estadoAuth,this.FolioInterno).subscribe(data =>{
+      console.log(data);
       this.actualizar();
     })
   }
