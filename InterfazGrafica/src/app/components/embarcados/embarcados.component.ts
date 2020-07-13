@@ -7,13 +7,44 @@ import { BdService } from 'src/app/services/bd.service';
   styleUrls: ['./embarcados.component.css']
 })
 export class EmbarcadosComponent implements OnInit {
-  embarcados:any;
-  constructor(private bdService:BdService) { }
+  embarcados: any;
+  chofer: boolean;
+  fecha: boolean;
+  constructor(private bdService: BdService) { }
 
   ngOnInit(): void {
+    this.actualizar();
+  }
+  surtidof(surtio: string, folio: string) {
+    if (surtio === '') {
+      alert('Esta vacio el surtidor');
+    } else {
+      this.bdService.surtir(folio, surtio).subscribe(data => {
+        this.actualizar();
+      });
+    }
+  }
+  parcialf(estado: string, surtio: string, obsAlmacen: string, fechaEmbarcada: string, chofer: string, folio: string) {
+    if (chofer !== '' && fechaEmbarcada !== '' && surtio !== '') {
+      const embarcador = this.bdService.getUsuario();
+      if (estado === 'Facturado') {
+        this.bdService.parcialEmbarcado(folio, 'ParcialEmb' , surtio, chofer, obsAlmacen,
+        embarcador, fechaEmbarcada).subscribe(data => {
+          this.actualizar();
+        });
+      } else if (estado === 'ParcialFacturado') {
+        this.bdService.parcialEmbarcado(folio, 'ParcialFac-ParcialEmb' , surtio, chofer, obsAlmacen,
+        embarcador, fechaEmbarcada).subscribe(data => {
+          this.actualizar();
+        });
+      }
+    } else {
+      alert('Hay campos vacios por favor completalos');
+    }
+  }
+  actualizar() {
     this.bdService.getporEmbarcar().subscribe(data => {
       this.embarcados = data;
     });
   }
-
 }

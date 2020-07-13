@@ -28,12 +28,12 @@
           <td>{{dato.RCFactura | date : 'short'}}</td>
           <td>{{dato.Factura}}</td>
           <td><input type="text" #surtidor value="{{dato.Surtidor}}" style="width: 80px;"></td>
-          <td><textarea name="obs" cols="15" rows="2"></textarea></td>
-          <td><input type="datetime-local" style="width: 50px;"></td>
-          <td><input type="text" #chofer style="width: 80px;"></td>
-          <td><button class="btn btn-info mb-1">Surtido</button><br>
+          <td><textarea name="obs" cols="15" rows="2" #obs value="{{dato.ObservacionesAlmacen}}"></textarea></td>
+          <td><input type="datetime-local" style="width: 100px;" #fechaE ></td>
+          <td><input type="text" #chofer style="width: 80px;" value="{{dato.Chofer}}"></td>
+          <td><button class="btn btn-info mb-1" (click)="surtidof(surtidor.value,dato.FolioInterno)">Surtido</button><br>
               <button class="btn btn-success mb-1">Embarcado</button><br>
-              <button class="btn btn-warning">Parcial Embarcado</button>
+              <button class="btn btn-warning" (click)="parcialf({{dato.Estado}},surtidor.value, obs.value, fechaE.value, chofer.value ,dato.FolioInterno)">Parcial Embarcado</button>
           </td>
         </tr>
       </tbody>

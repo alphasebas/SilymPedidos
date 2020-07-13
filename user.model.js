@@ -41,6 +41,26 @@ module.exports = {
                 callback({ array: null, id: null, success: true });
             });
     },
+    updateSurtido: (connection, body, callback) => {
+        connection.query('UPDATE pedidos SET Estado = "Surtido" ,Surtidor = ? WHERE FolioInterno = ?',
+            [body.Surtidor, body.FolioInterno], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback({ array: null, id: null, success: true });
+            });
+    },
+    updateParcialEmbarcado: (connection, body, callback) => {
+        connection.query('UPDATE pedidos SET Estado = ? , ObservacionesAlmacen = ? , FechaEmbarcada = ? ,Chofer  = ? ,Embarcador = ? ,Surtidor = ? WHERE FolioInterno = ?',
+            [body.Estado ,body.ObservacionesAlmacen,body.FechaEmbarcada, body.Chofer, body.Embarcador, body.Surtidor, body.FolioInterno], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback({ array: null, id: null, success: true });
+            });
+    },
     updateCobranza: (connection, body, callback) => {
         connection.query('UPDATE pedidos SET Estado = ? ,FechaEntregado = ? ,ObservacionesCobranza  = ? ,RCCobranza = current_timestamp() ,TipoCobranza = ? WHERE FolioInterno = ?',
             [body.Estado, body.FechaEntregado, body.ObservacionesCobranza, body.TipoCobranza, body.FolioInterno], (err, results) => {
@@ -133,7 +153,7 @@ module.exports = {
         })
     },
     getporFacturar: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Autorizado" || Estado = "ParcialFacturado"', (err, results) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Autorizado" || Estado = "ParcialFacturado || Estado = "ParcialFac-ParcialEmb" || Estado = "ParcialFac-ParcialEnt"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
@@ -142,7 +162,7 @@ module.exports = {
         })
     },
     getporEmbarcar: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Facturado"', (err, results) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Facturado" || Estado = "Surtido" || Estado = "ParcialEmbarcado" || Estado = "ParcialFacturado" || Estado = "ParcialFac-ParcialEmb"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;

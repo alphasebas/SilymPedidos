@@ -44,6 +44,31 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
+  surtir(folio: string, surtidor: string) {
+    const body = new HttpParams()
+    .set('FolioInterno', folio)
+    .set('Surtidor', surtidor);
+    return this.httpClient.post('http://localhost:3000/surtido', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+  parcialEmbarcado(folio: string, estado: string, surtidor: string, chofer: string, obsAlmacen: string, embarcador: string, fechaembarcada: string) {
+    const body = new HttpParams()
+    .set('FolioInterno', folio)
+    .set('Estado', estado)
+    .set('Chofer', chofer)
+    .set('ObservacionesAlmacen', obsAlmacen)
+    .set('Embarcador', embarcador)
+    .set('FechaEmbarcada', fechaembarcada)
+    .set('Surtidor', surtidor);
+    return this.httpClient.post('http://localhost:3000/parcialembarcado', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
   getUsuarios() {
     return this.httpClient.get('http://localhost:3000/usuarios');
   }

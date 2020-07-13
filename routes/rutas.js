@@ -58,6 +58,25 @@ router.put('/almacen', [
         res.json(data);
     }))
 });
+router.post('/parcialembarcado', [
+    body('Estado').not().isEmpty().isString(),
+    body('ObservacionesAlmacen'),
+    body('FechaEmbarcada').not().isEmpty().isString(),
+    body('Chofer').not().isEmpty().isString(),
+    body('Embarcador').not().isEmpty().isString(),
+    body('Surtidor').not().isEmpty().isString(),
+    body('FolioInterno').not().isEmpty().isString(),
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.updateParcialEmbarcado(connection, body, (data => {
+        res.json(data);
+    }))
+});
 
 router.post('/autorizacion', [
     body('Estado').not().isEmpty().isString(),
@@ -92,7 +111,22 @@ router.put('/cobranza', [
     }))
 });
 
-router.post('/llegada', [
+router.post('/surtido', [
+    body('Surtidor'),
+    body('FolioInterno')
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.updateSurtido(connection, body, (data => {
+        res.json(data);
+    }))
+});
+
+router.post('/surtidoen', [
     body('FechaDe'),
     body('FechaHasta')
 ], (req, res) => {
@@ -102,11 +136,10 @@ router.post('/llegada', [
         return
     }
     let body = req.body;
-    user.getFechaLLegada(connection, body, (data => {
+    user.getFechaEmbarcada(connection, body, (data => {
         res.json(data);
     }))
 });
-
 router.post('/embarcada', [
     body('FechaDe'),
     body('FechaHasta')
