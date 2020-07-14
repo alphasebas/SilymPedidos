@@ -93,12 +93,11 @@ router.post('/autorizacion', [
     }))
 });
 
-router.put('/cobranza', [
-    body('Estado').not().isEmpty().isString(),
-    body('FechaEntregado').not().isEmpty().isString(),
-    body('ObservacionesCobranza'),
+router.post('/cobranza', [
+    body('FolioInterno').not().isEmpty().isString(),
     body('TipoCobranza').not().isEmpty().isString(),
-    body('FolioInterno').not().isEmpty().isString()
+    body('ObservacionesCobranza').not().isEmpty().isString()
+    
 ], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -268,14 +267,14 @@ router.get('/porembarcar', (req, res) => {
         res.json(data);
     }))
 });
-router.get('/entregados', (req, res) => {
+router.get('/porentregar', (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         res.json({ success: false, err: JSON.stringify(errors) })
         return
     }
     let body = req.body;
-    user.getEntregados(connection, body, (data => {
+    user.getporEntregador(connection, body, (data => {
         res.json(data);
     }))
 });

@@ -52,7 +52,7 @@ module.exports = {
             });
     },
     updateParcialEmbarcado: (connection, body, callback) => {
-        connection.query('UPDATE pedidos SET Estado = ? , ObservacionesAlmacen = ? , FechaEmbarcada = ? ,Chofer  = ? ,Embarcador = ? ,Surtidor = ? WHERE FolioInterno = ?',
+        connection.query('UPDATE pedidos SET Estado = ?, ObservacionesAlmacen = ? , FechaEmbarcada = ? ,Chofer  = ? ,Embarcador = ? ,Surtidor = ? WHERE FolioInterno = ?',
             [body.Estado ,body.ObservacionesAlmacen,body.FechaEmbarcada, body.Chofer, body.Embarcador, body.Surtidor, body.FolioInterno], (err, results) => {
                 if (err) {
                     callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
@@ -62,8 +62,8 @@ module.exports = {
             });
     },
     updateCobranza: (connection, body, callback) => {
-        connection.query('UPDATE pedidos SET Estado = ? ,FechaEntregado = ? ,ObservacionesCobranza  = ? ,RCCobranza = current_timestamp() ,TipoCobranza = ? WHERE FolioInterno = ?',
-            [body.Estado, body.FechaEntregado, body.ObservacionesCobranza, body.TipoCobranza, body.FolioInterno], (err, results) => {
+        connection.query('UPDATE pedidos SET TipoCobranza = ?, ObservacionesCobranza = ?  WHERE FolioInterno = ?',
+            [body.TipoCobranza, body.ObservacionesCobranza, body.FolioInterno], (err, results) => {
                 if (err) {
                     callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                     return;
@@ -170,7 +170,7 @@ module.exports = {
             callback( results );
         })
     },
-    getEntregados: (connection, body, callback) => {
+    getporEntregador: (connection, body, callback) => {
         connection.query('SELECT * FROM pedidos WHERE Estado = "Embarcado"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });

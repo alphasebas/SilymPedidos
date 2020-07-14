@@ -2,19 +2,18 @@
   <table class="table table-striped table-light table-hover table-sm border" >
     <thead class="thead-dark" >
       <tr >
-        <th scope="col">Folio Interno</th>
+        <th scope="col">FI</th>
         <th scope="col">Cliente</th>
         <th scope="col">Estado</th>
-        <th scope="col">Fecha de Llegada</th>
-        <th scope="col">Observaciones de Ventas</th>
-        <th scope="col">RC de Ventas</th>
+        <th scope="col">Llegada</th>
+        <th scope="col">Obs Ventas</th>
         <th scope="col">Factura</th>
-        <th scope="col">RC de Factura</th>
+        <th scope="col">RC Fac</th>
         <th scope="col">Chofer</th>
         <th scope="col">Embarcador</th>
-        <th scope="col">Observaciones de Almacen</th>
+        <th scope="col">Obs Almacen</th>
         <th scope="col">Fecha de Entregado</th>
-        <th scope="col">Observaciones de Cobranza</th>
+        <th scope="col">Obs Cobranza</th>
         <th scope="col">Tipo de Cobranza</th>
       </tr>
     </thead>
@@ -25,21 +24,19 @@
         <td class="table-warning">{{dato.Estado}}</td>
         <td>{{dato.FechaLlegada | date : 'short'}}</td>
         <td>{{dato.ObservacionesVentas}}</td>
-        <td>{{dato.RCVentas}}</td>
         <td>{{dato.Factura}}</td>
         <td>{{dato.RCFactura | date : 'shortDate'}}</td>
         <td>{{dato.Chofer}}</td>
         <td>{{dato.Embarcador}}</td>
         <td>{{dato.ObservacionesAlmacen}}</td>
         <td>{{dato.FechaEntregado}}</td>
-        <td>{{dato.TipoCobranza}}</td>
-        <td>{{dato.ObservacionesCobranza}}</td>
+        <td><input type="text" #obsCob></td>
         <td>
-            <button class="btn btn-success" (click)="efectivo(dato.FolioInterno)">Efectivo</button><br>
-            <button class="btn btn-warning" (click)="factura(dato.FolioInterno)">Factura</button><br>
-            <button class="btn btn-primary" (click)="contraRecibo(dato.FolioInterno)">Contra Recibo</button><br>
-
-        </td>
+          <button class="btn btn-success" (click)="efectivo(dato.FolioInterno,obsCob.value)">Efectivo</button><br>
+          <button class="btn btn-warning" (click)="factura(dato.FolioInterno,obsCob.value)">Factura</button><br>
+          <button class="btn btn-primary" (click)="contraRecibo(dato.FolioInterno,obsCob.value)">Contra Recibo</button><br>
+          <button class="btn btn-danger" (click)="noEntregado(dato.FolioInterno,obsCob.value)">No Entregado</button><br>
+      </td>
       </tr>
     </tbody>
   </table>

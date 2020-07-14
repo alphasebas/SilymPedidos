@@ -55,6 +55,17 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
+  cobranza(folio:string, tipoCobranza:string, obsCob:string){
+    const body = new HttpParams()
+    .set('FolioInterno', folio)
+    .set('TipoCobranza', tipoCobranza)
+    .set('ObservacionesCobranza', obsCob);
+    return this.httpClient.post('http://localhost:3000/cobranza', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
   parcialEmbarcado(folio: string, estado: string, surtidor: string, chofer: string, obsAlmacen: string,
                    embarcador: string, fechaembarcada: string) {
     const body = new HttpParams()
@@ -91,7 +102,7 @@ export class BdService {
   }
 
   getEntregados() {
-    return this.httpClient.get('http://localhost:3000/entregados');
+    return this.httpClient.get('http://localhost:3000/porentregar');
   }
 
   getEnProceso() {
