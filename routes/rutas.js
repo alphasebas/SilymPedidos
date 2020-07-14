@@ -113,6 +113,7 @@ router.put('/cobranza', [
 
 router.post('/surtido', [
     body('Surtidor'),
+    body('Estado'),
     body('FolioInterno')
 ], (req, res) => {
     const errors = validationResult(req);

@@ -42,8 +42,8 @@ module.exports = {
             });
     },
     updateSurtido: (connection, body, callback) => {
-        connection.query('UPDATE pedidos SET Estado = "Surtido" ,Surtidor = ? WHERE FolioInterno = ?',
-            [body.Surtidor, body.FolioInterno], (err, results) => {
+        connection.query('UPDATE pedidos SET Estado = ? ,Surtidor = ? WHERE FolioInterno = ?',
+            [body.Estado, body.Surtidor, body.FolioInterno], (err, results) => {
                 if (err) {
                     callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                     return;
@@ -153,7 +153,7 @@ module.exports = {
         })
     },
     getporFacturar: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Autorizado" || Estado = "ParcialFacturado || Estado = "ParcialFac-ParcialEmb" || Estado = "ParcialFac-ParcialEnt"', (err, results) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Autorizado" || Estado = "ParcialFacturado || Estado = "ParcialFac-ParcialEmb" || Estado = "ParcialFac-ParcialEnt || Estado = "ParcialFact-Surtido""', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
@@ -162,7 +162,7 @@ module.exports = {
         })
     },
     getporEmbarcar: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Facturado" || Estado = "Surtido" || Estado = "ParcialEmbarcado" || Estado = "ParcialFacturado" || Estado = "ParcialFac-ParcialEmb"', (err, results) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Facturado" || Estado = "Surtido" || Estado = "ParcialEmbarcado" || Estado = "ParcialFacturado" || Estado = "ParcialFac-ParcialEmb" || Estado = "ParcialFact-Surtido"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;

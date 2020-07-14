@@ -31,8 +31,8 @@
           <td><textarea name="obs" cols="15" rows="2" #obs value="{{dato.ObservacionesAlmacen}}"></textarea></td>
           <td><input type="datetime-local" style="width: 100px;" #fechaE ></td>
           <td><input type="text" #chofer style="width: 80px;" value="{{dato.Chofer}}"></td>
-          <td><button class="btn btn-info mb-1" (click)="surtidof(surtidor.value,dato.FolioInterno)">Surtido</button><br>
-              <button class="btn btn-success mb-1">Embarcado</button><br>
+          <td><button class="btn btn-info mb-1" (click)="surtidof(surtidor.value,dato.Estado,dato.FolioInterno)">Surtido</button><br>
+              <button class="btn btn-success mb-1" (click)="embarcadof({{dato.Estado}},surtidor.value, obs.value, fechaE.value, chofer.value ,dato.FolioInterno)">Embarcado</button><br>
               <button class="btn btn-warning" (click)="parcialf({{dato.Estado}},surtidor.value, obs.value, fechaE.value, chofer.value ,dato.FolioInterno)">Parcial Embarcado</button>
           </td>
         </tr>

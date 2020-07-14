@@ -44,9 +44,10 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
-  surtir(folio: string, surtidor: string) {
+  surtir(folio: string, estado: string , surtidor: string) {
     const body = new HttpParams()
     .set('FolioInterno', folio)
+    .set('Estado', estado)
     .set('Surtidor', surtidor);
     return this.httpClient.post('http://localhost:3000/surtido', body.toString(),
     {
@@ -54,7 +55,8 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
-  parcialEmbarcado(folio: string, estado: string, surtidor: string, chofer: string, obsAlmacen: string, embarcador: string, fechaembarcada: string) {
+  parcialEmbarcado(folio: string, estado: string, surtidor: string, chofer: string, obsAlmacen: string,
+                   embarcador: string, fechaembarcada: string) {
     const body = new HttpParams()
     .set('FolioInterno', folio)
     .set('Estado', estado)
