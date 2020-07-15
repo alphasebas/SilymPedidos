@@ -29,13 +29,13 @@
         <td>{{dato.Chofer}}</td>
         <td>{{dato.Embarcador}}</td>
         <td>{{dato.ObservacionesAlmacen}}</td>
-        <td>{{dato.FechaEntregado}}</td>
-        <td><input type="text" #obsCob></td>
+        <td><input type="datetime-local" style="width: 78%;" #fechaEnt> <br> <p>Ultima Entrega: {{dato.FechaEntregado | date : 'short'}}</p> </td>
+        <td><textarea name="obs" cols="15" rows="4" #obsCob value="{{dato.ObservacionesCobranza}}"></textarea></td>
         <td>
-          <button class="btn btn-success" #ef value="Efectivo" (click)="updateCobranza(dato.FolioInterno,obsCob.value,ef.value)">Efectivo</button><br>
-          <button class="btn btn-warning" #fac value="Factura" (click)="updateCobranza(dato.FolioInterno,obsCob.value,fac.value)">Factura</button><br>
-          <button class="btn btn-primary" #cr value="ContraRecibo" (click)="updateCobranza(dato.FolioInterno,obsCob.value,cr.value)">Contra Recibo</button><br>
-          <button class="btn btn-danger" #ne value="NoEntregado" (click)="updateCobranza(dato.FolioInterno,obsCob.value,ne.value)">No Entregado</button><br>
+          <button class="btn btn-success" #ef value="Efectivo" (click)="updateCobranza(dato.FolioInterno,obsCob.value,ef.value,fechaEnt.value,dato.Estado)">Efectivo</button><br>
+          <button class="btn btn-warning" #fac value="Factura" (click)="updateCobranza(dato.FolioInterno,obsCob.value,fac.value,fechaEnt.value,dato.Estado)">Factura</button><br>
+          <button class="btn btn-primary" #cr value="ContraRecibo" (click)="updateCobranza(dato.FolioInterno,obsCob.value,cr.value,fechaEnt.value,dato.Estado)">Contra Recibo</button><br>
+          <button class="btn btn-danger" #ne value="NoEntregado" (click)="updateCobranza(dato.FolioInterno,obsCob.value,ne.value,fechaEnt.value,dato.Estado)">No Entregado</button><br>
       </td>
       </tr>
     </tbody>

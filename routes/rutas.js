@@ -96,7 +96,10 @@ router.post('/autorizacion', [
 router.post('/cobranza', [
     body('FolioInterno').not().isEmpty().isString(),
     body('TipoCobranza').not().isEmpty().isString(),
-    body('ObservacionesCobranza').not().isEmpty().isString()
+    body('ObservacionesCobranza'),
+    body('FechaEntregado'),
+    body('Estado').not().isEmpty().isString(),
+
     
 ], (req, res) => {
     const errors = validationResult(req);
@@ -274,7 +277,7 @@ router.get('/porentregar', (req, res) => {
         return
     }
     let body = req.body;
-    user.getporEntregador(connection, body, (data => {
+    user.getporEntregar(connection, body, (data => {
         res.json(data);
     }))
 });

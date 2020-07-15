@@ -55,11 +55,13 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
-  cobranza(folio:string, tipoCobranza:string, obsCob:string){
+  cobranza(folio:string, tipoCobranza:string, obsCob:string, fechaEnt:string, estado:string){
     const body = new HttpParams()
     .set('FolioInterno', folio)
     .set('TipoCobranza', tipoCobranza)
-    .set('ObservacionesCobranza', obsCob);
+    .set('ObservacionesCobranza', obsCob)
+    .set('FechaEntregado',fechaEnt)
+    .set('Estado',estado);
     return this.httpClient.post('http://localhost:3000/cobranza', body.toString(),
     {
     headers: new HttpHeaders()
@@ -101,7 +103,7 @@ export class BdService {
     return this.httpClient.get('http://localhost:3000/porautorizar');
   }
 
-  getEntregados() {
+  getporEntregar() {
     return this.httpClient.get('http://localhost:3000/porentregar');
   }
 
