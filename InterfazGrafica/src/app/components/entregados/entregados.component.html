@@ -32,10 +32,10 @@
         <td>{{dato.FechaEntregado}}</td>
         <td><input type="text" #obsCob></td>
         <td>
-          <button class="btn btn-success" (click)="efectivo(dato.FolioInterno,obsCob.value)">Efectivo</button><br>
-          <button class="btn btn-warning" (click)="factura(dato.FolioInterno,obsCob.value)">Factura</button><br>
-          <button class="btn btn-primary" (click)="contraRecibo(dato.FolioInterno,obsCob.value)">Contra Recibo</button><br>
-          <button class="btn btn-danger" (click)="noEntregado(dato.FolioInterno,obsCob.value)">No Entregado</button><br>
+          <button class="btn btn-success" #ef value="Efectivo" (click)="updateCobranza(dato.FolioInterno,obsCob.value,ef.value)">Efectivo</button><br>
+          <button class="btn btn-warning" #fac value="Factura" (click)="updateCobranza(dato.FolioInterno,obsCob.value,fac.value)">Factura</button><br>
+          <button class="btn btn-primary" #cr value="ContraRecibo" (click)="updateCobranza(dato.FolioInterno,obsCob.value,cr.value)">Contra Recibo</button><br>
+          <button class="btn btn-danger" #ne value="NoEntregado" (click)="updateCobranza(dato.FolioInterno,obsCob.value,ne.value)">No Entregado</button><br>
       </td>
       </tr>
     </tbody>

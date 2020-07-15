@@ -20,33 +20,11 @@ export class EntregadosComponent implements OnInit {
     });
 
   }
-  efectivo(folio:any,obsCob:string){
-    this.FolioInterno=folio;
-    this.tipoCobranza='Efectivo';
-    this.observCob=obsCob;
-    this.updateCobranza();
-  }
-  factura(folio:any,obsCob:string){
-    this.FolioInterno=folio;
-    this.tipoCobranza='Factura';
-    this.observCob=obsCob;
-    this.updateCobranza();
-  }
-  contraRecibo(folio:any,obsCob:string){
-    this.FolioInterno=folio;
-    this.tipoCobranza='ContraRecibo';
-    this.observCob=obsCob;
-    this.updateCobranza();
-  }
-  noEntregado(folio:any,obsCob:string){
-    this.FolioInterno=folio;
-    this.tipoCobranza='NoEntregado';
-    this.observCob=obsCob;
-    this.updateCobranza();
-  }
-  updateCobranza(){
-alert("tipo: "+this.tipoCobranza+". Folio: "+this.FolioInterno+". Obs Cobranza: "+this.observCob)
-    this.bdService.cobranza(this.tipoCobranza,this.FolioInterno,this.observCob).subscribe(data =>{
+
+  updateCobranza(folio:string,obsCob:string,tipoCobranza:string){
+
+    alert("tipo: "+tipoCobranza+". Folio: "+folio+". Obs Cobranza: "+obsCob)
+    this.bdService.cobranza(tipoCobranza,folio,obsCob).subscribe(data =>{
       this.actualizar();
     })
   }
