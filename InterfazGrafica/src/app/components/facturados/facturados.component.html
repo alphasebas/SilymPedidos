@@ -24,7 +24,7 @@
         <td>{{dato.FechaDeseada | date : 'shortDate'}}</td>
         <td>{{dato.ObservacionesVentas}}</td>
         <td>{{dato.RCAutorizado | date : 'short'}}</td>
-        <td><input type="text" #valor value="{{dato.Factura}}"></td>
+        <td><input type="text" #valor value="{{dato.Factura}}" [(ngModel)]="Fact"></td>
         <td><button class="btn btn-info mr-2" (click)="facturar(valor.value,dato.FolioInterno)">Facturar</button>
           <button class="btn btn-warning" (click)="parcial(valor.value,dato.FolioInterno)">Parcial Facturado</button>
         </td>

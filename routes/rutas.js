@@ -292,6 +292,17 @@ router.get('/enproceso', (req, res) => {
         res.json(data);
     }))
 });
+router.get('/folio', (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getfolio(connection, body, (data => {
+        res.json(data);
+    }))
+});
 
 
 

@@ -14,6 +14,7 @@ import { EntregadosComponent } from './components/entregados/entregados.componen
 import { EnprocesoComponent } from './components/enproceso/enproceso.component';
 import { CrearpedidoComponent } from './components/crearpedido/crearpedido.component';
 import { AutorizarComponent } from './components/autorizar/autorizar.component';
+import { BuscarComponent } from './components/buscar/buscar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AutorizarComponent } from './components/autorizar/autorizar.component';
     EntregadosComponent,
     EnprocesoComponent,
     CrearpedidoComponent,
-    AutorizarComponent
+    AutorizarComponent,
+    BuscarComponent
   ],
   imports: [
     BrowserModule,

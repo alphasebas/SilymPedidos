@@ -19,7 +19,7 @@ export class EntregadosComponent implements OnInit {
   }
 
   updateCobranza(folio:string,obsCob:string,tipoCobranza:string,fechaEnt:string, estado:string){
-    if (tipoCobranza == 'NoEntregado' || estado == 'ParcialEmbarcado'){
+    /*if (tipoCobranza == 'NoEntregado' || estado == 'ParcialEmbarcado'){
       if(estado == 'ParcialEmbarcado' && tipoCobranza == 'NoEntregado'){
         if(obsCob !==''){
         estado='ParcialEmbarcado-NE'
@@ -51,8 +51,60 @@ export class EntregadosComponent implements OnInit {
         })
     }else{
       alert(" Es necesario llenar el campo Fecha de Entregado");
+    }*/
+    if(tipoCobranza !== 'NoEntregado'){
+      if(fechaEnt !== ''){
+        if(estado === 'Embarcado'){
+          estado='Entregado';
+          this.bdService.cobranza(folio,tipoCobranza,obsCob,fechaEnt,estado).subscribe(data =>{
+            this.actualizar();
+          });
+        }else if(estado === 'ParcialEmb'){
+          estado='ParcialEmb-Ent';
+          this.bdService.cobranza(folio,tipoCobranza,obsCob,fechaEnt,estado).subscribe(data =>{
+            this.actualizar();
+          });
+        }else if(estado === 'ParcialFact-Emb'){
+          estado='ParcialFact-Ent';
+          this.bdService.cobranza(folio,tipoCobranza,obsCob,fechaEnt,estado).subscribe(data =>{
+            this.actualizar();
+          });
+        }else if(estado === 'ParcialFact-ParcialEmb'){
+          estado='ParcialFact-ParcialEmb-Ent';
+          this.bdService.cobranza(folio,tipoCobranza,obsCob,fechaEnt,estado).subscribe(data =>{
+            this.actualizar();
+          });
+        }
+      }else{
+      alert(" Es necesario llenar el campo Fecha de Entregado");
     }
-
+    }else{
+      if(obsCob !==''){
+        if(estado === 'Embarcado'){
+          estado='NoEntregado';
+          this.bdService.cobranza(folio,tipoCobranza,obsCob,fechaEnt,estado).subscribe(data =>{
+            this.actualizar();
+          });
+        }else if(estado === 'ParcialEmb'){
+          estado='ParcialEmb-NE';
+          this.bdService.cobranza(folio,tipoCobranza,obsCob,fechaEnt,estado).subscribe(data =>{
+            this.actualizar();
+          });
+        }else if(estado === 'ParcialFact-Emb'){
+          estado='ParcialFact-NE';
+          this.bdService.cobranza(folio,tipoCobranza,obsCob,fechaEnt,estado).subscribe(data =>{
+            this.actualizar();
+          });
+        }else if(estado === 'ParcialFact-ParcialEmb'){
+          estado='ParcialFact-ParcialEmb-NE';
+          this.bdService.cobranza(folio,tipoCobranza,obsCob,fechaEnt,estado).subscribe(data =>{
+            this.actualizar();
+          });
+        }
+        }else{
+          alert("deja una observacion de por que no fue entregado");
+        }
+    }
 
   }
   actualizar() {

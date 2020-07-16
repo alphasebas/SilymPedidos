@@ -9,6 +9,7 @@ import { EmbarcadosComponent } from './components/embarcados/embarcados.componen
 import { EntregadosComponent } from './components/entregados/entregados.component';
 import { EnprocesoComponent } from './components/enproceso/enproceso.component';
 import { AutorizarComponent } from './components/autorizar/autorizar.component';
+import { BuscarComponent } from './components/buscar/buscar.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'entregados', component: EntregadosComponent },
   { path: 'enproceso', component: EnprocesoComponent },
   { path: 'navbar', component: NavbarComponent },
+  { path: 'buscar', component: BuscarComponent },
   {path: '**', pathMatch: 'full', redirectTo: '#'}
 ];
 

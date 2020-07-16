@@ -151,5 +151,14 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
+  getFolio(folio:string){
+    const body = new HttpParams()
+    .set('Usuario', folio);
+    return this.httpClient.post('http://localhost:3000/folio', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
 
 }

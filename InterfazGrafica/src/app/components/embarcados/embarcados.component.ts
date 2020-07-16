@@ -16,34 +16,36 @@ export class EmbarcadosComponent implements OnInit {
     this.actualizar();
   }
   surtidof(surtio: string, estado: string , folio: string) {
-    if (surtio === '') {
-      alert('Esta vacio el surtidor');
-    } else {
-      if (estado === 'Facturado') {
+    if(estado === 'Facturado' || estado === 'Surtido' || estado === 'NoEntregado' || estado === 'ParcialEmb-Ent' || estado === 'ParcialEmb-NE'){
+      if (surtio === '') {
+        alert('Esta vacio el surtidor');
+      }else{
         this.bdService.surtir(folio, 'Surtido' , surtio).subscribe(data => {
           this.actualizar();
         });
-      } else if (estado === 'ParcialFacturado') {
-        this.bdService.surtir(folio, 'ParcialFact-Surtido' , surtio).subscribe(data => {
-          this.actualizar();
-        });
-      } else if (estado === 'ParcialFact-Ent' || estado === 'ParcialFact-Emb') {
+      }
+
+    }else if(estado === 'ParcialFact-NE' || estado === 'ParcialFact-ParcialEmb-NE' || estado === 'ParcialFact-Surtido' || estado === 'ParcialFact' || estado === 'ParcialFact-ParcialEmb-Ent'){
+      if (surtio === '') {
+        alert('Esta vacio el surtidor');
+      }else{
         this.bdService.surtir(folio, 'ParcialFact-Surtido' , surtio).subscribe(data => {
           this.actualizar();
         });
       }
     }
+
   }
   parcialf(estado: string, surtio: string, obsAlmacen: string, fechaEmbarcada: string, chofer: string, folio: string) {
     if (chofer !== '' && fechaEmbarcada !== '' && surtio !== '') {
       const embarcador = this.bdService.getUsuario();
-      if (estado === 'Facturado') {
+      if (estado === 'Facturado' || estado === 'Surtido' || estado === 'NoEntregado' || estado === 'ParcialEmb-Ent' || estado === 'ParcialEmb-NE' ) {
         this.bdService.parcialEmbarcado(folio, 'ParcialEmb' , surtio, chofer, obsAlmacen,
         embarcador, fechaEmbarcada).subscribe(data => {
           this.actualizar();
         });
-      } else if (estado === 'ParcialFacturado' || estado === 'ParcialFact-Surtido' || estado === 'ParcialFact-Ent') {
-        this.bdService.parcialEmbarcado(folio, 'ParcialFac-ParcialEmb' , surtio, chofer, obsAlmacen,
+      } else if (estado === 'ParcialFact' || estado === 'ParcialFact-NE' || estado === 'ParcialFact-ParcialEmb-NE' || estado === 'ParcialFact-Surtido' || estado === 'ParcialFact-ParcialEmb-Ent') {
+        this.bdService.parcialEmbarcado(folio, 'ParcialFact-ParcialEmb' , surtio, chofer, obsAlmacen,
         embarcador, fechaEmbarcada).subscribe(data => {
           this.actualizar();
         });
@@ -55,13 +57,13 @@ export class EmbarcadosComponent implements OnInit {
   embarcadof(estado: string, surtio: string, obsAlmacen: string, fechaEmbarcada: string, chofer: string, folio: string) {
     if (chofer !== '' && fechaEmbarcada !== '' && surtio !== '') {
       const embarcador = this.bdService.getUsuario();
-      if (estado === 'Facturado' || estado === 'Surtido') {
+      if (estado === 'Facturado' || estado === 'Surtido' || estado === 'NoEntregado' || estado === 'ParcialEmb-Ent' || estado === 'ParcialEmb-NE') {
         this.bdService.parcialEmbarcado(folio, 'Embarcado' , surtio, chofer, obsAlmacen,
         embarcador, fechaEmbarcada).subscribe(data => {
           this.actualizar();
         });
-      } else if (estado === 'ParcialFacturado' || estado === 'ParcialFact-Surtido' || estado === 'ParcialFact-Ent') {
-        this.bdService.parcialEmbarcado(folio, 'ParcialFac-Emb' , surtio, chofer, obsAlmacen,
+      } else if (estado === 'ParcialFact' || estado === 'ParcialFact-Surtido' || estado === 'ParcialFact-NE' || estado === 'ParcialFact-ParcialEmb-NE' || estado === 'ParcialFact-ParcialEmb-Ent') {
+        this.bdService.parcialEmbarcado(folio, 'ParcialFact-Emb' , surtio, chofer, obsAlmacen,
         embarcador, fechaEmbarcada).subscribe(data => {
           this.actualizar();
         });

@@ -1,0 +1,62 @@
+<div class="card" style=" width: 100%">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" style="margin-left:25%; width: 50%">
+      <p>Busqueda por Folio Interno   <button class="btn btn-info" #Folio value="FI" (click)="toggle(Folio.value)">
+        <i class="fa fa-search"></i></button></p>
+        <ng-container  *ngIf="busquedaFI">
+          <label>Ingresa el numero de folio interno:<input type="number" #folioI ></label>
+          <button class="btn btn-info"  (click)="buscar(folioI.value)">Buscar</button>
+          <div class="table-responsive">
+            <table class="table table-striped table-light table-hover table-sm border" >
+              <thead class="thead-dark" >
+                <tr >
+                  <th scope="col">FI</th>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">Llegada</th>
+                  <th scope="col">Obs Ventas</th>
+                  <th scope="col">Factura</th>
+                  <th scope="col">RC Fac</th>
+                  <th scope="col">Chofer</th>
+                  <th scope="col">Embarcador</th>
+                  <th scope="col">Obs Almacen</th>
+                  <th scope="col">Fecha de Entregado</th>
+                  <th scope="col">Obs Cobranza</th>
+                  <th scope="col">Tipo de Cobranza</th>
+                </tr>
+              </thead>
+              <tbody style="border: 1px solid black !important;  border-collapse: collapse !important;">
+                <tr *ngFor="let dato of res" >
+                  <th scope="row">{{dato.FolioInterno}}</th>
+                  <td>{{dato.Cliente}}</td>
+                  <td>{{dato.FechaLlegada | date : 'short'}}</td>
+                  <td>{{dato.ObservacionesVentas}}</td>
+                  <td>{{dato.Factura}}</td>
+                  <td>{{dato.RCFactura | date : 'shortDate'}}</td>
+                  <td>{{dato.Chofer}}</td>
+                  <td>{{dato.Embarcador}}</td>
+                  <td>{{dato.ObservacionesAlmacen}}</td>
+                  <td><input type="datetime-local" style="width: 78%;" #fechaEnt> <br> <p>Ultima Entrega: {{dato.FechaEntregado | date : 'short'}}</p> </td>
+                  <td><textarea name="obs" cols="15" rows="4" #obsCob value="{{dato.ObservacionesCobranza}}"></textarea></td>
+                  <td>{{dato.TipoCobranza</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </ng-container>
+    </li>
+    <li class="list-group-item" style="margin-left:25%; width: 50%">
+      <p>Busqueda por Cliente   <button class="btn btn-info" #Cliente value="C"  (click)="toggle(Cliente.value)">
+        <i class="fa fa-search"></i></button></p>
+        <ng-container  *ngIf="busquedaC">
+          <label>Ingresa el nombre del cliente:<input type="text"></label>
+        </ng-container>
+    </li>
+    <li class="list-group-item" style="margin-left:25%; width: 50%">
+      <p>Busqueda por Fecha de Entregado    <button class="btn btn-info" #Fecha value="F"  (click)="toggle(Fecha.value)">
+        <i class="fa fa-search"></i></button></p>
+        <ng-container  *ngIf="busquedaF">
+
+        </ng-container>
+    </li>
+  </ul>
+</div>

@@ -124,6 +124,16 @@ module.exports = {
             callback( results );
         })
     },
+    getFolio:(connection, body, callback) => {
+        connection.query('SELECT * FROM pedidos WHERE FolioInterno = ? ',
+        [body.FolioInterno], (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback( results );
+        })
+    },
     getPendientes: (connection, body, callback) => {
         connection.query('SELECT * FROM pedidos WHERE Estado = "PendienteAutorizar" || Estado = "ParcialFacturado" || Estado = "ParcialEmbarcado"', (err, results) => {
             if (err) {
@@ -153,7 +163,7 @@ module.exports = {
         })
     },
     getporFacturar: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Autorizado" || Estado = "ParcialFacturado || Estado = "ParcialFac-ParcialEmb" || Estado = "ParcialFac-ParcialEnt || Estado = "ParcialFact-Surtido""', (err, results) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Autorizado" || Estado = "ParcialFact || Estado = "ParcialFac-ParcialEmb" || Estado = "ParcialFact-NE" || Estado = "ParcialFact-Ent" || Estado = "ParcialFact-Surtido" || Estado = "ParcialFact-ParcialEmb" || Estado = "ParcialFact-ParcialEmb-NE" || Estado = "ParcialFact-ParcialEmb-Ent"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
@@ -162,7 +172,7 @@ module.exports = {
         })
     },
     getporEmbarcar: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Facturado" || Estado = "Surtido" || Estado = "ParcialEmbarcado" || Estado = "ParcialFacturado" || Estado = "ParcialFac-ParcialEmb" || Estado = "ParcialFact-Surtido"', (err, results) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Facturado" || Estado = "Surtido" || Estado = "ParcialFact" || Estado = "NoEntregado" || Estado = "ParcialFact-NE" || Estado = "ParcialEmb-Ent" || Estado = "ParcialEmb-NE" || Estado = "ParcialFact-ParcialEmb-NE" || Estado = "ParcialFact-Surtido" || Estado = "ParcialFact-ParcialEmb-Ent"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
@@ -171,7 +181,7 @@ module.exports = {
         })
     },
     getporEntregar: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Embarcado" || Estado = "ParcialEmbarcado"  || Estado = "ParcialEmbarcado-NE" || Estado = "Embarcado-NE"', (err, results) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Embarcado" || Estado = "ParcialEmb" || Estado = "ParcialFact-Emb" || Estado = "ParcialFact-ParcialEmb"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;
