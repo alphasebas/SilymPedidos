@@ -19,6 +19,7 @@ const cors = require('cors');
     }
     console.log('conexion exitosa a la base de datos');
  });
+ 
 
  app.listen(3000,(err,res)=> {
      if(err){

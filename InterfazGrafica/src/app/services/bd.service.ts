@@ -5,6 +5,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BdService {
+  ip = 'http://192.168.0.152:3000/';
   usuario: string;
   tipo: string;
   constructor(private httpClient: HttpClient) { }
@@ -16,7 +17,7 @@ export class BdService {
     .set('OC', oc)
     .set('FechaDeseada', fechadeseada)
     .set('ObservacionesVentas', observaciones);
-    return this.httpClient.post('http://localhost:3000/ventas', body.toString(),
+    return this.httpClient.post(this.ip + 'ventas', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -28,7 +29,7 @@ export class BdService {
     .set('Estado', estadoAuth)
     .set('AutorizadoPor', autorizadopor)
     .set('FolioInterno', folio);
-    return this.httpClient.post('http://localhost:3000/autorizacion', body.toString(),
+    return this.httpClient.post(this.ip +  'autorizacion', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -39,7 +40,7 @@ export class BdService {
     .set('FolioInterno', folio)
     .set('Factura', factura)
     .set('Estado', estado);
-    return this.httpClient.put('http://localhost:3000/factura', body.toString(),
+    return this.httpClient.put(this.ip + 'factura', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -50,7 +51,7 @@ export class BdService {
     .set('FolioInterno', folio)
     .set('Estado', estado)
     .set('Surtidor', surtidor);
-    return this.httpClient.post('http://localhost:3000/surtido', body.toString(),
+    return this.httpClient.post(this.ip + 'surtido', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -63,7 +64,7 @@ export class BdService {
     .set('ObservacionesCobranza', obsCob)
     .set('FechaEntregado', fechaEnt)
     .set('Estado', estado);
-    return this.httpClient.post('http://localhost:3000/cobranza', body.toString(),
+    return this.httpClient.post(this.ip + 'cobranza', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -73,7 +74,7 @@ export class BdService {
     const body = new HttpParams()
     .set('FolioInterno', folio)
     .set('Estado', estado);
-    return this.httpClient.post('http://localhost:3000/proceso', body.toString(),
+    return this.httpClient.post(this.ip + 'proceso', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -89,7 +90,7 @@ export class BdService {
     .set('Embarcador', embarcador)
     .set('FechaEmbarcada', fechaembarcada)
     .set('Surtidor', surtidor);
-    return this.httpClient.post('http://localhost:3000/parcialembarcado', body.toString(),
+    return this.httpClient.post(this.ip + 'parcialembarcado', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -98,37 +99,37 @@ export class BdService {
   modifbuscar(folio: string) {
     const body = new HttpParams()
     .set('FolioInterno', folio);
-    return this.httpClient.post('http://localhost:3000/modifbuscar', body.toString(),
+    return this.httpClient.post(this.ip + 'modifbuscar', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
   getUsuarios() {
-    return this.httpClient.get('http://localhost:3000/usuarios');
+    return this.httpClient.get(this.ip + 'usuarios');
   }
 
   getPendientes() {
-    return this.httpClient.get('http://localhost:3000/pendientes');
+    return this.httpClient.get(this.ip + 'pendientes');
   }
 
   getporFacturar() {
-    return this.httpClient.get('http://localhost:3000/porfacturar');
+    return this.httpClient.get(this.ip + 'porfacturar');
   }
 
   getporEmbarcar() {
-    return this.httpClient.get('http://localhost:3000/porembarcar');
+    return this.httpClient.get(this.ip + 'porembarcar');
   }
   getporAutorizar() {
-    return this.httpClient.get('http://localhost:3000/porautorizar');
+    return this.httpClient.get(this.ip + 'porautorizar');
   }
 
   getporEntregar() {
-    return this.httpClient.get('http://localhost:3000/porentregar');
+    return this.httpClient.get(this.ip + 'porentregar');
   }
 
   getEnProceso() {
-    return this.httpClient.get('http://localhost:3000/enproceso');
+    return this.httpClient.get(this.ip + 'enproceso');
   }
   setUsuario(user: string, tipo: string) {
     this.usuario = user;
@@ -145,7 +146,7 @@ export class BdService {
     .set('Usuario', usuario)
     .set('Password', password)
     .set('Tipo', tipo);
-    return this.httpClient.post('http://localhost:3000/createuser', body.toString(),
+    return this.httpClient.post(this.ip + 'createuser', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -156,7 +157,7 @@ export class BdService {
     .set('Usuario', usuario)
     .set('Password', password)
     .set('Tipo', tipo);
-    return this.httpClient.put('http://localhost:3000/edituser', body.toString(),
+    return this.httpClient.put(this.ip + 'edituser', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -165,7 +166,7 @@ export class BdService {
   deleteUser(usuario: string) {
     const body = new HttpParams()
     .set('Usuario', usuario);
-    return this.httpClient.post('http://localhost:3000/borraruser', body.toString(),
+    return this.httpClient.post(this.ip + 'borraruser', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -174,7 +175,7 @@ export class BdService {
   getFolio(folio: string) {
     const body = new HttpParams()
     .set('FolioInterno', folio);
-    return this.httpClient.post('http://localhost:3000/folio', body.toString(),
+    return this.httpClient.post(this.ip + 'folio', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -183,7 +184,7 @@ export class BdService {
   getCliente(cliente: string) {
     const body = new HttpParams()
     .set('Cliente', cliente);
-    return this.httpClient.post('http://localhost:3000/cliente', body.toString(),
+    return this.httpClient.post(this.ip + 'cliente', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -193,7 +194,7 @@ export class BdService {
     const body = new HttpParams()
     .set('FechaDe', fechaDe)
     .set('FechaHasta', fechaHasta);
-    return this.httpClient.post('http://localhost:3000/fechasentregados', body.toString(),
+    return this.httpClient.post(this.ip + 'fechasentregados', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
