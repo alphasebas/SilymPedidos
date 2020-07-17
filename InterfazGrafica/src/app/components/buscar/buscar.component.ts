@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { BdService } from 'src/app/services/bd.service';
 
@@ -7,54 +8,61 @@ import { BdService } from 'src/app/services/bd.service';
   styleUrls: ['./buscar.component.css']
 })
 export class BuscarComponent implements OnInit {
-  busquedaFI:boolean=false;
-  busquedaC:boolean=false;
-  busquedaF:boolean=false;
-  resFI:any
-  resC:any
-  resF:any
-  encontradoFI=false;
-  encontradoC=false;
-  encontradoF=false;
-  constructor(private bdService: BdService ) { }
+  busquedaFI = false;
+  busquedaC = false;
+  busquedaF = false;
+  resFI: any;
+  resC: any;
+  resF: any;
+  encontradoFI = false;
+  encontradoC = false;
+  encontradoF = false;
+  tipo: string;
+  constructor(private bdService: BdService, private router: Router ) { }
 
   ngOnInit(): void {
+    this.tipo = this.bdService.getTipoUsuario();
   }
-  buscarFI(busqueda:string){
-    this.bdService.getFolio(busqueda).subscribe(data =>{
+  modificar(folio: string) {
+    this.bdService.modifbuscar(folio).subscribe(data => {
+      this.router.navigate(['enproceso']);
+    });
+  }
+  buscarFI(busqueda: string) {
+    this.bdService.getFolio(busqueda).subscribe(data => {
       this.resFI = data;
-      this.encontradoFI=true;
-    })
+      this.encontradoFI = true;
+    });
   }
-  buscarC(busqueda:string){
-    this.bdService.getCliente(busqueda).subscribe(data =>{
+  buscarC(busqueda: string) {
+    this.bdService.getCliente(busqueda).subscribe(data => {
       this.resC = data;
 
-      this.encontradoC=true;
-    })
+      this.encontradoC = true;
+    });
   }
-  buscarF(fechaDe:string,fechaHasta:string){
-    this.bdService.getFechaEntregados(fechaDe,fechaHasta).subscribe(data =>{
+  buscarF(fechaDe: string, fechaHasta: string) {
+    this.bdService.getFechaEntregados(fechaDe, fechaHasta).subscribe(data => {
       this.resF = data;
 
-      this.encontradoF=true;
-    })
+      this.encontradoF = true;
+    });
   }
 
-  toggle(valor:string){
-    if(valor=='FI'){
+  toggle(valor: string) {
+    if (valor === 'FI') {
       this.busquedaFI = !this.busquedaFI;
-      this.encontradoFI=false;
+      this.encontradoFI = false;
     }
 
-    if(valor=='C'){
+    if (valor === 'C') {
       this.busquedaC = !this.busquedaC;
-      this.encontradoC=false;
+      this.encontradoC = false;
     }
 
-    if(valor=='F'){
+    if (valor === 'F') {
       this.busquedaF = !this.busquedaF;
-      this.encontradoF=false;
+      this.encontradoF = false;
     }
   }
 }

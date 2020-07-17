@@ -80,6 +80,7 @@ router.post('/parcialembarcado', [
 
 router.post('/autorizacion', [
     body('Estado').not().isEmpty().isString(),
+    body('AutorizadoPor'),
     body('FolioInterno').not().isEmpty().isString(),
 ], (req, res) => {
     const errors = validationResult(req);
@@ -124,6 +125,19 @@ router.post('/proceso', [
     }
     let body = req.body;
     user.updateenProceso(connection, body, (data => {
+        res.json(data);
+    }))
+});
+router.post('/modifbuscar', [
+    body('FolioInterno').not().isEmpty().isString(),    
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.modifbuscar(connection, body, (data => {
         res.json(data);
     }))
 });

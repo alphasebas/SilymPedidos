@@ -23,9 +23,10 @@ export class BdService {
     });
   }
 
-  autorizacion(estadoAuth: string, folio: string) {
+  autorizacion(estadoAuth: string, folio: string, autorizadopor: string) {
     const body = new HttpParams()
     .set('Estado', estadoAuth)
+    .set('AutorizadoPor', autorizadopor)
     .set('FolioInterno', folio);
     return this.httpClient.post('http://localhost:3000/autorizacion', body.toString(),
     {
@@ -89,6 +90,15 @@ export class BdService {
     .set('FechaEmbarcada', fechaembarcada)
     .set('Surtidor', surtidor);
     return this.httpClient.post('http://localhost:3000/parcialembarcado', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+  modifbuscar(folio: string) {
+    const body = new HttpParams()
+    .set('FolioInterno', folio);
+    return this.httpClient.post('http://localhost:3000/modifbuscar', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -179,10 +189,10 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
-  getFechaEntregados(fechaDe: string,fechaHasta:string) {
+  getFechaEntregados(fechaDe: string, fechaHasta: string) {
     const body = new HttpParams()
     .set('FechaDe', fechaDe)
-    .set('FechaHasta', fechaHasta)
+    .set('FechaHasta', fechaHasta);
     return this.httpClient.post('http://localhost:3000/fechasentregados', body.toString(),
     {
     headers: new HttpHeaders()

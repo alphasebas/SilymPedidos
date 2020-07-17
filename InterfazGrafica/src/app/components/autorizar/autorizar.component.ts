@@ -8,28 +8,22 @@ import { BdService } from 'src/app/services/bd.service';
 })
 export class AutorizarComponent implements OnInit {
 
-  pendientes:any;
-  constructor(private bdService:BdService) { }
+  pendientes: any;
+  constructor(private bdService: BdService) { }
 
   ngOnInit(): void {
-    this.bdService.getporAutorizar().subscribe(data =>{
-      this.pendientes = data;
-      console.log(data);
-
-    });
-
+    this.actualizar();
   }
 
-  autorizacion(valor:string, folio:string){
+  autorizacion(valor: string, folio: string) {
 
-
-    this.bdService.autorizacion(valor,folio).subscribe(data =>{
-      console.log(data);
+    const user = this.bdService.getUsuario();
+    this.bdService.autorizacion(valor, folio, user).subscribe(data => {
       this.actualizar();
-    })
+    });
   }
-  actualizar(){
-    this.bdService.getporAutorizar().subscribe(data =>{
+  actualizar() {
+    this.bdService.getporAutorizar().subscribe(data => {
 
       this.pendientes = data;
 

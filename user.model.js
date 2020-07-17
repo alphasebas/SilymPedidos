@@ -81,6 +81,16 @@ module.exports = {
                 callback({ array: null, id: null, success: true });
             });
     },
+    modifbuscar: (connection, body, callback) => {
+        connection.query('UPDATE pedidos SET Estado = "Modificar" WHERE FolioInterno = ?',
+            [body.FolioInterno], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback({ array: null, id: null, success: true });
+            });
+    },
     updateUser: (connection, body, callback) => {
         connection.query('UPDATE usuarios SET Password = ? ,Tipo = ? WHERE Usuario = ?',
             [body.Password, body.Tipo, body.Usuario], (err, results) => {
@@ -219,8 +229,8 @@ module.exports = {
         })
     },
     autorizacion: (connection, body, callback) => {
-        connection.query('UPDATE pedidos SET Estado = ?, RCAutorizado = current_timestamp()  WHERE FolioInterno = ?',
-            [body.Estado, body.FolioInterno], (err, results) => {
+        connection.query('UPDATE pedidos SET Estado = ?, AutorizadoPor = ? , RCAutorizado = current_timestamp()  WHERE FolioInterno = ?',
+            [body.Estado, body.AutorizadoPor, body.FolioInterno], (err, results) => {
                 if (err) {
                     callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                     return;
