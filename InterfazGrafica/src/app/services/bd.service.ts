@@ -163,8 +163,27 @@ export class BdService {
   }
   getFolio(folio: string) {
     const body = new HttpParams()
-    .set('Usuario', folio);
+    .set('FolioInterno', folio);
     return this.httpClient.post('http://localhost:3000/folio', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+  getCliente(cliente: string) {
+    const body = new HttpParams()
+    .set('Cliente', cliente);
+    return this.httpClient.post('http://localhost:3000/cliente', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+  getFechaEntregados(fechaDe: string,fechaHasta:string) {
+    const body = new HttpParams()
+    .set('FechaDe', fechaDe)
+    .set('FechaHasta', fechaHasta)
+    return this.httpClient.post('http://localhost:3000/fechasentregados', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')

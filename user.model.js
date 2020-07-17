@@ -144,6 +144,16 @@ module.exports = {
             callback( results );
         })
     },
+    getCliente:(connection, body, callback) => {
+      connection.query('SELECT * FROM pedidos WHERE Cliente = ? ',
+      [body.Cliente], (err, results) => {
+          if (err) {
+              callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+              return;
+          }
+          callback( results );
+      })
+  },
     getPendientes: (connection, body, callback) => {
         connection.query('SELECT * FROM pedidos WHERE Estado = "PendienteAutorizar" || Estado = "ParcialFacturado" || Estado = "ParcialEmbarcado"', (err, results) => {
             if (err) {

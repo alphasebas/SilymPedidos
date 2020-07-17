@@ -172,21 +172,6 @@ router.post('/embarcada', [
         res.json(data);
     }))
 });
-
-router.post('/entregado', [
-    body('FechaDe'),
-    body('FechaHasta')
-], (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        res.json({ success: false, err: JSON.stringify(errors) })
-        return
-    }
-    let body = req.body;
-    user.getFechaEntregado(connection, body, (data => {
-        res.json(data);
-    }))
-});
 router.get('/usuarios', (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -307,19 +292,46 @@ router.get('/enproceso', (req, res) => {
         res.json(data);
     }))
 });
-router.get('/folio', (req, res) => {
+router.post('/folio', [
+    body('FolioInterno')
+], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         res.json({ success: false, err: JSON.stringify(errors) })
         return
     }
     let body = req.body;
-    user.getfolio(connection, body, (data => {
+    user.getFolio(connection, body, (data => {
         res.json(data);
     }))
 });
-
-
+router.post('/cliente', [
+    body('Cliente')
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getCliente(connection, body, (data => {
+        res.json(data);
+    }))
+});
+router.post('/fechasentregados', [
+    body('FechaDe'),
+    body('FechaHasta')
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getFechaEntregado(connection, body, (data => {
+        res.json(data);
+    }))
+});
 
 
 module.exports = router;
