@@ -29,7 +29,15 @@ export class CrearpedidoComponent implements OnInit {
   crear() {
     this.bdService.crearPedido(this.clientei, this.fechallegada, this.oc, this.fechadeseada, this.observaciones).subscribe(data => {
       alert('Creado Con exito');
+      this.limpiar();
     });
+  }
+  limpiar() {
+    this.clientei = '';
+    this.fechallegada = '';
+    this.oc = '';
+    this.fechadeseada = '';
+    this.observaciones = '';
   }
 
 }

@@ -29,7 +29,7 @@
         <td>{{dato.Chofer}}</td>
         <td>{{dato.Embarcador}}</td>
         <td>{{dato.ObservacionesAlmacen}}</td>
-        <td><input type="datetime-local" style="width: 78%;" #fechaEnt> <br> <p>Ultima Entrega: {{dato.FechaEntregado | date : 'short'}}</p> </td>
+        <td><input type="datetime-local" style="width: 78%;" #fechaEnt> </td>
         <td><textarea name="obs" cols="15" rows="4" #obsCob value="{{dato.ObservacionesCobranza}}"></textarea></td>
         <td>
           <button class="btn btn-success" #ef value="Efectivo" (click)="updateCobranza(dato.FolioInterno,obsCob.value,ef.value,fechaEnt.value,dato.Estado)">Efectivo</button><br>

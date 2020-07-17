@@ -112,6 +112,21 @@ router.post('/cobranza', [
         res.json(data);
     }))
 });
+router.post('/proceso', [
+    body('FolioInterno').not().isEmpty().isString(),
+    body('Estado').not().isEmpty().isString(),
+    
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.updateenProceso(connection, body, (data => {
+        res.json(data);
+    }))
+});
 
 router.post('/surtido', [
     body('Surtidor'),

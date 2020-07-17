@@ -23,7 +23,7 @@ export class BdService {
     });
   }
 
-  autorizacion(estadoAuth:string, folio:string){
+  autorizacion(estadoAuth: string, folio: string) {
     const body = new HttpParams()
     .set('Estado', estadoAuth)
     .set('FolioInterno', folio);
@@ -55,14 +55,24 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
-  cobranza(folio:string, tipoCobranza:string, obsCob:string, fechaEnt:string, estado:string){
+  cobranza(folio: string, tipoCobranza: string, obsCob: string, fechaEnt: string, estado: string) {
     const body = new HttpParams()
     .set('FolioInterno', folio)
     .set('TipoCobranza', tipoCobranza)
     .set('ObservacionesCobranza', obsCob)
-    .set('FechaEntregado',fechaEnt)
-    .set('Estado',estado);
+    .set('FechaEntregado', fechaEnt)
+    .set('Estado', estado);
     return this.httpClient.post('http://localhost:3000/cobranza', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+  updateenProceso(folio: string, estado: string) {
+    const body = new HttpParams()
+    .set('FolioInterno', folio)
+    .set('Estado', estado);
+    return this.httpClient.post('http://localhost:3000/proceso', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -151,7 +161,7 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
-  getFolio(folio:string){
+  getFolio(folio: string) {
     const body = new HttpParams()
     .set('Usuario', folio);
     return this.httpClient.post('http://localhost:3000/folio', body.toString(),

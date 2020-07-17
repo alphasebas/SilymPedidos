@@ -71,6 +71,16 @@ module.exports = {
                 callback({ array: null, id: null, success: true });
             });
     },
+    updateenProceso: (connection, body, callback) => {
+        connection.query('UPDATE pedidos SET Estado = ? WHERE FolioInterno = ?',
+            [ body.Estado, body.FolioInterno], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback({ array: null, id: null, success: true });
+            });
+    },
     updateUser: (connection, body, callback) => {
         connection.query('UPDATE usuarios SET Password = ? ,Tipo = ? WHERE Usuario = ?',
             [body.Password, body.Tipo, body.Usuario], (err, results) => {
@@ -163,7 +173,7 @@ module.exports = {
         })
     },
     getporFacturar: (connection, body, callback) => {
-        connection.query('SELECT * FROM pedidos WHERE Estado = "Autorizado" || Estado = "ParcialFact || Estado = "ParcialFac-ParcialEmb" || Estado = "ParcialFact-NE" || Estado = "ParcialFact-Ent" || Estado = "ParcialFact-Surtido" || Estado = "ParcialFact-ParcialEmb" || Estado = "ParcialFact-ParcialEmb-NE" || Estado = "ParcialFact-ParcialEmb-Ent"', (err, results) => {
+        connection.query('SELECT * FROM pedidos WHERE Estado = "Autorizado" || Estado = "ParcialFact" || Estado = "ParcialFact-ParcialEmb" || Estado = "ParcialFact-NE" || Estado = "ParcialFact-Ent" || Estado = "ParcialFact-Surtido" || Estado = "ParcialFact-ParcialEmb" || Estado = "ParcialFact-ParcialEmb-NE" || Estado = "ParcialFact-ParcialEmb-Ent"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;

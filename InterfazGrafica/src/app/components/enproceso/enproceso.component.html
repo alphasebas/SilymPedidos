@@ -16,7 +16,13 @@
       <tr *ngFor="let dato of enProceso" >
         <th scope="row">{{dato.FolioInterno}}</th>
         <td>{{dato.Cliente}}</td>
-        <td class="table-warning">{{dato.Estado}}</td>
+        <td class="table-warning">{{dato.Estado}}
+          <ng-container *ngIf="tipo=='Admin'"><br>
+          <button class="btn-success" (click)="PAf(dato.FolioInterno)">PendienteAutorizar</button>
+          <button class="btn-primary" (click)="Autorizadof(dato.FolioInterno)">Autorizado</button>
+          <button class="btn-info" (click)="Facturadof(dato.FolioInterno)">Facturado</button>
+          </ng-container>
+        </td>
         <td>{{dato.FechaLlegada | date : 'short'}}</td>
         <td>{{dato.OC}}</td>
         <td>{{dato.FechaDeseada | date : 'shortDate'}}</td>

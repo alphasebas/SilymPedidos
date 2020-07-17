@@ -24,13 +24,9 @@
         <td>{{dato.ObservacionesVentas}}</td>
         <td>{{dato.RCVentas | date : 'short'}}</td>
         <td>
-          <ng-container *ngIf="botones">
-            <button class="btn btn-success" (click)="autorizado(dato.FolioInterno)">Autorizar</button>
-          <button class="btn btn-danger" (click)="noAutorizado(dato.FolioInterno)">No Autorizar</button>
-          </ng-container>
-          <ng-container *ngIf="!botones">
-            <p>{{estadoAuth}}</p>
-          </ng-container>
+
+            <button class="btn btn-success" #auth value="Autorizado" (click)="autorizacion(auth.value,dato.FolioInterno)">Autorizar</button>
+          <button class="btn btn-danger" #noauth  value="NoAutorizado"(click)="autorizacion(noauth.value,dato.FolioInterno)">No Autorizar</button>
 
         </td>
       </tr>
