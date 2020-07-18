@@ -10,6 +10,7 @@ export class EmbarcadosComponent implements OnInit {
   embarcados: any;
   chofer: boolean;
   fecha: boolean;
+  color: string;
   constructor(private bdService: BdService) { }
 
   ngOnInit(): void {
@@ -82,5 +83,15 @@ export class EmbarcadosComponent implements OnInit {
     this.bdService.getporEmbarcar().subscribe(data => {
       this.embarcados = data;
     });
+  }
+  colores(estado: string) {
+    if (estado === 'Facturado' || estado === 'Surtido' || estado === 'ParcialFact' || estado === 'ParcialFact-Surtido') {
+      this.color = 'Amarillo';
+    // tslint:disable-next-line: max-line-length
+    } else if (estado === 'NoEntregado' || estado === 'ParcialFact-NE' || estado === 'ParcialEmb-NE' || estado === 'ParcialFact-ParcialEmb-NE') {
+      this.color = 'Rojo';
+    } else {
+      this.color = 'Verde';
+    }
   }
 }

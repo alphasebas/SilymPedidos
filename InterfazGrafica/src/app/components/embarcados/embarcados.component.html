@@ -21,7 +21,11 @@
         <tr *ngFor="let dato of embarcados, let i=index" >
           <th scope="row">{{dato.FolioInterno}}</th>
           <td>{{dato.Cliente}}</td>
-          <td class="table-warning">{{dato.Estado}}</td>
+          {{colores(dato.Estado)}}
+          <td class="table-warning" *ngIf="color=='Amarillo'">{{dato.Estado}}</td>
+            <td class="table-danger" *ngIf="color=='Rojo'">{{dato.Estado}}</td>
+            <td class="table-success" *ngIf="color=='Verde'">{{dato.Estado}}</td>   
+                    
           <td>{{dato.FechaLlegada | date : 'short'}}</td>
           <td>{{dato.FechaDeseada | date : 'shortDate'}}</td>
           <td>{{dato.ObservacionesVentas}}</td>
