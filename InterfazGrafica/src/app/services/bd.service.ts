@@ -5,7 +5,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BdService {
-  ip = 'http://192.168.0.152:3000/';
+  ip = 'http://192.168.56.1:3000/';
   usuario: string;
   tipo: string;
   constructor(private httpClient: HttpClient) { }

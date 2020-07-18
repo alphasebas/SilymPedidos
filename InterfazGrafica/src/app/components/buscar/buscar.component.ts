@@ -14,6 +14,7 @@ export class BuscarComponent implements OnInit {
   resFI: any;
   resC: any;
   resF: any;
+  resVer:any;
   encontradoFI = false;
   encontradoC = false;
   encontradoF = false;
@@ -44,11 +45,14 @@ export class BuscarComponent implements OnInit {
   buscarF(fechaDe: string, fechaHasta: string) {
     this.bdService.getFechaEntregados(fechaDe, fechaHasta).subscribe(data => {
       this.resF = data;
-
       this.encontradoF = true;
     });
   }
-
+  botonVer(folio:string){
+    this.bdService.getFolio(folio).subscribe(data => {
+      this.resVer = data;
+    });
+  }
   toggle(valor: string) {
     if (valor === 'FI') {
       this.busquedaFI = !this.busquedaFI;

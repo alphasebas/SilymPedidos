@@ -1,9 +1,23 @@
 table, td, th {
     border: 1px solid #3a3a3a;
-  
+
   }
-  
+
   table {
     border-collapse: collapse;
-  
+
   }
+  .modal-dialog {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .modal-content {
+    width: 1600px;
+    height: auto;
+    border-radius: 0;
+  }
+
+

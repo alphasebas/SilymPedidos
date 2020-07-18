@@ -33,9 +33,11 @@
         <tr *ngFor="let dato of resFI" >
           <th scope="row">{{dato.FolioInterno}}
             <ng-container *ngIf="tipo=='Admin'"><br><button class="btn-warning" (click)="modificar(dato.FolioInterno)">Modificar</button></ng-container>
-            
+
           </th>
-          <td>{{dato.Cliente}}</td>
+          <td>{{dato.Cliente}}<br><button class="btn-success" data-toggle="modal" data-target="#verMas" (click)="botonVer(dato.FolioInterno)">Ver Más</button>
+
+          </td>
           <td>{{dato.FechaLlegada | date : 'short'}}</td>
           <td>{{dato.ObservacionesVentas}}</td>
           <td>{{dato.OC}}</td>
@@ -85,7 +87,7 @@
           <th scope="row">{{dato.FolioInterno}}
             <ng-container *ngIf="tipo=='Admin'"><br><button class="btn-warning" (click)="modificar(dato.FolioInterno)">Modificar</button></ng-container>
           </th>
-          <td>{{dato.Cliente}}</td>
+          <td>{{dato.Cliente}}<br><button class="btn-success" data-toggle="modal" data-target="#verMas" (click)="botonVer(dato.FolioInterno)">Ver Más</button></td>
           <td>{{dato.FechaLlegada | date : 'short'}}</td>
           <td>{{dato.ObservacionesVentas}}</td>
           <td>{{dato.OC}}</td>
@@ -133,9 +135,9 @@
       <tbody style="border: 1px solid black !important;  border-collapse: collapse !important;">
         <tr *ngFor="let dato of resF" >
           <th scope="row">{{dato.FolioInterno}}
-            <ng-container *ngIf="tipo=='Admin'"><br><button class="btn-warning" (click)="modificar(dato.FolioInterno)">Modificar</button></ng-container>
+            <ng-container *ngIf="tipo=='Admin'"><br><button class="btn-warning"  (click)="modificar(dato.FolioInterno)">Modificar</button></ng-container>
           </th>
-          <td>{{dato.Cliente}}</td>
+          <td>{{dato.Cliente}}<br><button class="btn-success" data-toggle="modal" data-target="#verMas" (click)="botonVer(dato.FolioInterno)">Ver Más</button></td>
           <td>{{dato.FechaLlegada | date : 'short'}}</td>
           <td>{{dato.ObservacionesVentas}}</td>
           <td>{{dato.OC}}</td>
@@ -152,3 +154,76 @@
     </table>
   </div>
 </div>
+
+<!--modal-->
+<ng-container >
+  <div class="modal fade" id="verMas" tabindex="-1" role="dialog" aria-labelledby="verMasLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="verMasLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-light table-hover table-sm border" >
+              <thead class="thead-dark" >
+                <tr >
+                  <th scope="col">FI</th>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Llegada</th>
+                  <th scope="col">OC</th>
+                  <th scope="col">Deseada</th>
+                  <th scope="col">Obs Ventas</th>
+                  <th scope="col">RC Ven</th>
+                  <th scope="col">Autorizado Por</th>
+                  <th scope="col">RC Aut</th>
+                  <th scope="col">Factura</th>
+                  <th scope="col">RC Fac</th>
+                  <th scope="col">Embarcada</th>
+                  <th scope="col">Chofer</th>
+                  <th scope="col">Embarcador</th>
+                  <th scope="col">Surtidor</th>
+                  <th scope="col">Obs Alm</th>
+                  <th scope="col">Entregado</th>
+                  <th scope="col">Obs Cob</th>
+                  <th scope="col">RC Cob</th>
+                  <th scope="col">Tipo Cob</th>
+                </tr>
+              </thead>
+              <tbody style="border: 1px solid black !important;  border-collapse: collapse !important;">
+                <tr *ngFor="let dato of resVer" >
+                  <th scope="row">{{dato.FolioInterno}}</th>
+                  <td>{{dato.Cliente}}</td>
+                  <td>{{dato.Estado}}</td>
+                  <td>{{dato.FechaLlegada | date : 'short'}}</td>
+                  <td>{{dato.OC}}</td>
+                  <td>{{dato.FechaDeseada | date : 'short'}}</td>
+                  <td>{{dato.ObservacionesVentas}}</td>
+                  <td>{{dato.RCVentas | date : 'short'}}</td>
+                  <td>{{dato.AutorizadoPor}}</td>
+                  <td>{{dato.RCAutorizado | date : 'short'}}</td>
+                  <td>{{dato.Factura}}</td>
+                  <td>{{dato.RCFactura | date : 'short'}}</td>
+                  <td>{{dato.FechaEmbarcada | date : 'short'}}</td>
+                  <td>{{dato.Chofer}}</td>
+                  <td>{{dato.Embarcador}}</td>
+                  <td>{{dato.Surtidor}}</td>
+                  <td>{{dato.ObservacionesAlmacen}}</td>
+                  <td> {{dato.FechaEntregado | date : 'short'}}</td>
+                  <td>{{dato.ObservacionesCobranza}}</td>
+                  <td>{{dato.RCCobranza | date : 'short'}}</td>
+                  <td>{{dato.TipoCobranza}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+</ng-container>
