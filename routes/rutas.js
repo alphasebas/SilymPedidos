@@ -307,6 +307,17 @@ router.get('/enproceso', (req, res) => {
         res.json(data);
     }))
 });
+router.get('/todosClientes', (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getTodosClientes(connection, body, (data => {
+        res.json(data);
+    }))
+});
 router.post('/folio', [
     body('FolioInterno')
 ], (req, res) => {
@@ -330,6 +341,19 @@ router.post('/cliente', [
     }
     let body = req.body;
     user.getCliente(connection, body, (data => {
+        res.json(data);
+    }))
+});
+router.post('/addcliente', [
+    body('Cliente')
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.addCliente(connection, body, (data => {
         res.json(data);
     }))
 });
