@@ -1,6 +1,6 @@
 import { BdService } from 'src/app/services/bd.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-crearcompras',
@@ -12,18 +12,21 @@ export class CrearcomprasComponent implements OnInit {
   provi: string;
   fechadeseada: string;
   productos = '';
+  tipo = 'Stock';
+  radio: string;
   constructor(private formBuilder: FormBuilder, private bdService: BdService) {
-    this.comprasform = this.formBuilder.group({
-      provi: [''],
-      fechadeseada: ['', Validators.required],
-      productos: [''],
-    });
    }
 
   ngOnInit(): void {
   }
-  crear() {
-
+  crear(clientei: string) {
+    const user = this.bdService.getUsuario();
+    this.bdService.crearCompra(this.provi, this.fechadeseada, clientei, this.tipo, this.productos, user).subscribe(data => {
+      alert('Creado con exito');
+    });
+  }
+  setTipo(tipo: string) {
+    this.tipo = tipo;
   }
 
 }

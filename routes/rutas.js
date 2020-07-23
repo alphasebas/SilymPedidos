@@ -24,6 +24,26 @@ router.post('/ventas', [
         res.json(data);
     }))
 });
+router.post('/compras', [
+
+    body('Cliente'),
+    body('ProvMarca').not().isEmpty().isString(),
+    body('Tipo'),
+    body('FechaDeseada').not().isEmpty().isString(),
+    body('Producto'),
+    body('Atendido').not().isEmpty().isString()
+
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.create2(connection, body, (data => {
+        res.json(data);
+    }))
+});
 
 router.post('/factura', [
     body('Estado').not().isEmpty().isString(),

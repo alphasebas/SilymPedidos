@@ -22,6 +22,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatRadioModule} from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AltaclienteComponent } from './components/altacliente/altacliente.component';
 
@@ -52,8 +53,8 @@ import { AltaclienteComponent } from './components/altacliente/altacliente.compo
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
