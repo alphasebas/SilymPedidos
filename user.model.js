@@ -10,9 +10,10 @@ module.exports = {
                 callback({ array: null, id: null, success: true });
             });
     },
-    createUser: (connection, body, callback) => {
-        connection.query('INSERT INTO usuarios SET Usuario = ?,Password = ?, Tipo = ?',
-            [body.Usuario, body.Password, body.Tipo], (err, results) => {
+    
+    addCliente: (connection, body, callback) => {
+        connection.query('INSERT INTO clientes SET Cliente = ?',
+            [body.Cliente], (err, results) => {
                 if (err) {
                     callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                     return;
@@ -152,6 +153,16 @@ module.exports = {
                 return;
             }
             callback( results );
+        })
+    },
+    getTodosClientes:(connection, body, callback) => {
+        connection.query('SELECT * FROM clientes', (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            //callback({ array: null, id: results || null, success: true });
+            callback(results);
         })
     },
     getCliente:(connection, body, callback) => {

@@ -17,6 +17,14 @@ import { AutorizarComponent } from './components/autorizar/autorizar.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { CrearcomprasComponent } from './components/crearcompras/crearcompras.component';
 
+import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AltaclienteComponent } from './components/altacliente/altacliente.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,14 +38,22 @@ import { CrearcomprasComponent } from './components/crearcompras/crearcompras.co
     CrearpedidoComponent,
     AutorizarComponent,
     BuscarComponent,
-    CrearcomprasComponent
+    CrearcomprasComponent,
+    AltaclienteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

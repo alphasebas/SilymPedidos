@@ -24,7 +24,16 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
+  addCliente(cliente:string){
+    const body = new HttpParams()
+    .set('Cliente', cliente)
 
+    return this.httpClient.post(this.ip +  'addcliente', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
   autorizacion(estadoAuth: string, folio: string, autorizadopor: string) {
     const body = new HttpParams()
     .set('Estado', estadoAuth)
@@ -105,6 +114,9 @@ export class BdService {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
+  }
+  getTodosClientes() {
+    return this.httpClient.get(this.ip + 'todosClientes');
   }
   getUsuarios() {
     return this.httpClient.get(this.ip + 'usuarios');
