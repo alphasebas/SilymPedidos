@@ -77,7 +77,7 @@
           <ng-container *ngIf="Tipo == 'Admin' || Tipo == 'Almacen'">
             <a class="dropdown-item" [routerLink]="['porRecibir']">Por Recibir</a>
           </ng-container>
-            <a class="dropdown-item" >En Proceso</a>
+            <a class="dropdown-item" [routerLink]="['enprocesocompras']" >En Proceso</a>
             <a class="dropdown-item" >Buscar</a>
           </div>
         </li>

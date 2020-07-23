@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AltaclienteComponent } from './components/altacliente/altacliente.component';
 import { PorpedirComponent } from './components/porpedir/porpedir.component';
 import { PorrecibirComponent } from './components/porrecibir/porrecibir.component';
+import { EnprocesocomprasComponent } from './components/enprocesocompras/enprocesocompras.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PorrecibirComponent } from './components/porrecibir/porrecibir.componen
     AltaclienteComponent,
     PorpedirComponent,
     PorrecibirComponent,
+    EnprocesocomprasComponent,
   ],
   imports: [
     BrowserModule,

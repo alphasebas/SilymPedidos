@@ -14,12 +14,14 @@ import { CrearcomprasComponent } from './components/crearcompras/crearcompras.co
 import { AltaclienteComponent } from './components/altacliente/altacliente.component';
 import { PorpedirComponent } from './components/porpedir/porpedir.component';
 import { PorrecibirComponent } from './components/porrecibir/porrecibir.component';
+import { EnprocesocomprasComponent } from './components/enprocesocompras/enprocesocompras.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'porPedir', component: PorpedirComponent },
   { path: 'porRecibir', component: PorrecibirComponent },
+  { path: 'enprocesocompras', component: EnprocesocomprasComponent },
   { path: 'agregarCliente', component: AltaclienteComponent },
   { path: 'pendientes', component: PendientesComponent },
   { path: 'autorizacion', component: AutorizarComponent },

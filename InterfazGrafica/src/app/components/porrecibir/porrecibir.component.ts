@@ -24,13 +24,13 @@ export class PorrecibirComponent implements OnInit {
   }
 
   recibido(fact:string,fechaLlegada:string,obsA:string,folio:string,estado:string){
-    if (fechaLlegada !== '') {
+    if (fechaLlegada !== '' && fact !== '') {
       this.bdService.updateRecibido(fact,fechaLlegada,obsA,folio,estado).subscribe(data => {
         this.actualizar();
 
       });
     } else {
-    alert(' Es necesario llenar el campo Fecha de Llegada');
+    alert(' Es necesario llenar el campo Fecha de Llegada y/o Factura');
     }
 
   }

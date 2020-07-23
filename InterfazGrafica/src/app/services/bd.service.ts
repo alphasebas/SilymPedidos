@@ -153,6 +153,9 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
+  getEnProcesoCompras(){
+    return this.httpClient.get(this.ip + 'enprocesocompras');
+  }
   getPendientesCompras(){
     return this.httpClient.get(this.ip + 'pendientescompra');
   }
