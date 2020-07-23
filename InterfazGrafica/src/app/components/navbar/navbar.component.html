@@ -16,9 +16,15 @@
     <ul class="navbar-nav mr-auto">
       <ng-container *ngIf="Tipo == 'Ventas' || Tipo == 'Admin' || Tipo == 'Facturacion' || Tipo == 'Cobranza'">
         <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['agregarCliente']">Agregar Cliente</a>
+        </li>
+
+      </ng-container>
+      <ng-container *ngIf="Tipo == 'Ventas' || Tipo == 'Admin' || Tipo == 'Facturacion' || Tipo == 'Cobranza'">
+        <li class="nav-item active">
           <a class="nav-link" [routerLink]="['crearpedidos']">Crear Pedido</a>
         </li>
-            
+
       </ng-container>
       <li class="nav-item active">
         <a class="nav-link" [routerLink]="['enproceso']">En Proceso</a>
@@ -47,7 +53,7 @@
           <a class="nav-link" [routerLink]="['entregados']">Por Entregar</a>
         </li>
       </ng-container>
-      
+
       <li class="nav-item active">
         <a class="nav-link" [routerLink]="['buscar']">Buscar</a>
       </li>

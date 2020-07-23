@@ -16,6 +16,14 @@ import { CrearpedidoComponent } from './components/crearpedido/crearpedido.compo
 import { AutorizarComponent } from './components/autorizar/autorizar.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 
+import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AltaclienteComponent } from './components/altacliente/altacliente.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,14 +36,24 @@ import { BuscarComponent } from './components/buscar/buscar.component';
     EnprocesoComponent,
     CrearpedidoComponent,
     AutorizarComponent,
-    BuscarComponent
+    BuscarComponent,
+    AltaclienteComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

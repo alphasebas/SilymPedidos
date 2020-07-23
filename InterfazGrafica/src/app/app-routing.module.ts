@@ -10,10 +10,12 @@ import { EntregadosComponent } from './components/entregados/entregados.componen
 import { EnprocesoComponent } from './components/enproceso/enproceso.component';
 import { AutorizarComponent } from './components/autorizar/autorizar.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
+import { AltaclienteComponent } from './components/altacliente/altacliente.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'agregarCliente', component: AltaclienteComponent },
   { path: 'pendientes', component: PendientesComponent },
   { path: 'autorizacion', component: AutorizarComponent },
   { path: 'crearpedidos', component: CrearpedidoComponent },
