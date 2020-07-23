@@ -24,6 +24,20 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
+  crearCompra(prov: string, fechadeseada: string, cliente: string, tipo: string, producto: string, atendido: string) {
+    const body = new HttpParams()
+    .set('Cliente', cliente)
+    .set('ProvMarca', prov)
+    .set('Tipo', tipo)
+    .set('FechaDeseada', fechadeseada)
+    .set('Producto', producto)
+    .set('Atendido', atendido);
+    return this.httpClient.post(this.ip + 'compras', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
   addCliente(cliente: string) {
     const body = new HttpParams()
     .set('Cliente', cliente);

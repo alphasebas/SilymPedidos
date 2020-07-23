@@ -10,6 +10,16 @@ module.exports = {
                 callback({ array: null, id: null, success: true });
             });
     },
+    create2: (connection, body, callback) => {
+        connection.query('INSERT INTO compras SET Cliente = ?,Estado = "Pendiente", ProvMarca = ?,Tipo = ?, FechaDeseada = ?,Productos = ?, PedidoPor = ?,RCPedido = current_timestamp()',
+            [body.Cliente, body.ProvMarca, body.Tipo, body.FechaDeseada, body.Producto, body.Atendido], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback({ array: null, id: null, success: true });
+            });
+    },
     
     addCliente: (connection, body, callback) => {
         connection.query('INSERT INTO clientes SET Cliente = ?',
