@@ -15,6 +15,7 @@ import { EnprocesoComponent } from './components/enproceso/enproceso.component';
 import { CrearpedidoComponent } from './components/crearpedido/crearpedido.component';
 import { AutorizarComponent } from './components/autorizar/autorizar.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
+import { CrearcomprasComponent } from './components/crearcompras/crearcompras.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BuscarComponent } from './components/buscar/buscar.component';
     EnprocesoComponent,
     CrearpedidoComponent,
     AutorizarComponent,
-    BuscarComponent
+    BuscarComponent,
+    CrearcomprasComponent
   ],
   imports: [
     BrowserModule,

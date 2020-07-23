@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   passwordi: string;
   tipoi = 'Ventas';
   editando = false;
-  lista: string[] = ['Ventas', 'Facturacion', 'Almacen', 'Cobranza', 'Admin'];
+  lista: string[] = ['Ventas', 'Facturacion', 'Almacen', 'Cobranza', 'Compras', 'Admin'];
   constructor(private bdService: BdService, private router: Router) { }
   ngOnInit(): void {
     this.actualizar();

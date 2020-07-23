@@ -1,0 +1,46 @@
+<div class="container mt-4 mb-5">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title text-center">Crear Pedido Compra</h5>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-text text-center">Ingresa los datos.</h5>
+                    <form [formGroup]="comprasform">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 col-form-label">Proveedor/Marca: </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control col-sm-8" formControlName="provi" name="provi" id="provi" [(ngModel)]="provi">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 col-form-label">Fecha Deseada: </label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control col-sm-8" formControlName="fechadeseada" name="fechadeseada" id="fechadeseada" [(ngModel)]="fechadeseada"
+                                [class.is-invalid]="comprasform.get('fechadeseada').invalid && comprasform.get('fechadeseada').touched" required>
+                                <div *ngIf="comprasform.controls['fechadeseada'].invalid && (comprasform.controls['fechadeseada'].dirty || comprasform.controls['fechadeseada'].touched)"
+                                class="invalid-feedback">
+                                    <div *ngIf="comprasform.controls['fechadeseada'].errors.required">
+                                        Es necesario poner la fecha deseada del pedido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 col-form-label">Productos:  </label>
+                            <div class="col-sm-8">
+                                <textarea name="productos" [(ngModel)]="productos" id="productos" cols="30" rows="5" formControlName="productos"></textarea>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button  class="button btn-success btn-lg" style="width: 50%;" [disabled]="comprasform.invalid" (click)="crear()">Crear</button>
+                        </div>
+                    </form>
+                </div>
+              </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

@@ -10,6 +10,7 @@ import { EntregadosComponent } from './components/entregados/entregados.componen
 import { EnprocesoComponent } from './components/enproceso/enproceso.component';
 import { AutorizarComponent } from './components/autorizar/autorizar.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
+import { CrearcomprasComponent } from './components/crearcompras/crearcompras.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'pendientes', component: PendientesComponent },
   { path: 'autorizacion', component: AutorizarComponent },
   { path: 'crearpedidos', component: CrearpedidoComponent },
+  { path: 'crearcompras', component: CrearcomprasComponent },
   { path: 'facturados', component: FacturadosComponent },
   { path: 'embarcados', component: EmbarcadosComponent },
   { path: 'entregados', component: EntregadosComponent },
