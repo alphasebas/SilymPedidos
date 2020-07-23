@@ -235,6 +235,38 @@ router.post('/createuser', [
         res.json(data);
     }))
 });
+router.post('/pedidocompras', [
+    body('FechaEstimada'),
+    body('FolioInterno'),
+    body('Estado')
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.updatePedidoCompras(connection, body, (data => {
+        res.json(data);
+    }))
+});
+router.post('/updaterecibido', [
+    body('Factura'),
+    body('FechaLlegada'),
+    body('ObservacionesAlmacen'),
+    body('FolioInterno'),
+    body('Estado')
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.updateRecibido(connection, body, (data => {
+        res.json(data);
+    }))
+});
 router.put('/edituser', [
     body('Usuario').not().isEmpty().isString(),
     body('Password').not().isEmpty().isString(),
@@ -315,6 +347,28 @@ router.get('/todosClientes', (req, res) => {
     }
     let body = req.body;
     user.getTodosClientes(connection, body, (data => {
+        res.json(data);
+    }))
+});
+router.get('/pendientescompra', (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getPendientesCompras(connection, body, (data => {
+        res.json(data);
+    }))
+});
+router.get('/porrecibir', (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getporRecibir(connection, body, (data => {
         res.json(data);
     }))
 });

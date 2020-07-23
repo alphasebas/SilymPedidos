@@ -5,7 +5,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BdService {
-  ip = 'http://192.168.0.152:3000/';
+  ip = 'http://192.168.56.1:3000/';
   usuario: string;
   tipo: string;
   constructor(private httpClient: HttpClient) { }
@@ -106,6 +106,30 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
+  pedidoCompras(fechaEstimada: string,folio: string, estado: string) {
+    const body = new HttpParams()
+    .set('FechaEstimada', fechaEstimada)
+    .set('FolioInterno', folio)
+    .set('Estado', estado);
+    return this.httpClient.post(this.ip + 'pedidocompras', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+  updateRecibido(fact:string,fechaLlegada:string,obsA:string,folio:string,estado:string) {
+    const body = new HttpParams()
+    .set('Factura', fact)
+    .set('FechaLlegada', fechaLlegada)
+    .set('ObservacionesAlmacen', obsA)
+    .set('FolioInterno', folio)
+    .set('Estado', estado);
+    return this.httpClient.post(this.ip + 'updaterecibido', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
   modifbuscar(folio: string) {
     const body = new HttpParams()
     .set('FolioInterno', folio);
@@ -114,6 +138,12 @@ export class BdService {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
+  }
+  getPendientesCompras(){
+    return this.httpClient.get(this.ip + 'pendientescompra');
+  }
+  getporRecibir(){
+    return this.httpClient.get(this.ip + 'porrecibir');
   }
   getTodosClientes() {
     return this.httpClient.get(this.ip + 'todosClientes');

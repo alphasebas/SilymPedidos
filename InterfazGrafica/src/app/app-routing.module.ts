@@ -12,10 +12,14 @@ import { AutorizarComponent } from './components/autorizar/autorizar.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { CrearcomprasComponent } from './components/crearcompras/crearcompras.component';
 import { AltaclienteComponent } from './components/altacliente/altacliente.component';
+import { PorpedirComponent } from './components/porpedir/porpedir.component';
+import { PorrecibirComponent } from './components/porrecibir/porrecibir.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'porPedir', component: PorpedirComponent },
+  { path: 'porRecibir', component: PorrecibirComponent },
   { path: 'agregarCliente', component: AltaclienteComponent },
   { path: 'pendientes', component: PendientesComponent },
   { path: 'autorizacion', component: AutorizarComponent },

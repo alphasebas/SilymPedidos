@@ -82,6 +82,26 @@ module.exports = {
                 callback({ array: null, id: null, success: true });
             });
     },
+    updatePedidoCompras: (connection, body, callback) => {
+        connection.query('UPDATE compras SET FechaEstimada = ?, Estado = ?, RCComprado = current_timestamp() WHERE FolioInterno = ?',
+            [body.FechaEstimada, body.Estado, body.FolioInterno], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback(results);
+            });
+    },
+    updateRecibido: (connection, body, callback) => {
+        connection.query('UPDATE compras SET Factura = ?,FechaLlegada = ?,ObservacionesAlmacen = ?, Estado = ?, RCRecibido = current_timestamp() WHERE FolioInterno = ?',
+            [body.Factura,body.FechaLlegada,body.ObservacionesAlmacen, body.Estado, body.FolioInterno], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback(results);
+            });
+    },
     modifbuscar: (connection, body, callback) => {
         connection.query('UPDATE pedidos SET Estado = "Modificar" WHERE FolioInterno = ?',
             [body.FolioInterno], (err, results) => {
@@ -184,6 +204,24 @@ module.exports = {
             callback( results );
         })
     },
+    getPendientesCompras: (connection, body, callback) => {
+        connection.query('SELECT * FROM compras WHERE Estado = "Pendiente"', (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback( results );
+        })
+    },
+    getporRecibir: (connection, body, callback) => {
+        connection.query('SELECT * FROM compras WHERE Estado = "Pedido" || Estado = "ParcialRecibido"', (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback( results );
+        })
+    },
     getporAutorizar: (connection, body, callback) => {
         connection.query('SELECT * FROM pedidos WHERE Estado = "PendienteAutorizar" ', (err, results) => {
             if (err) {
@@ -232,6 +270,15 @@ module.exports = {
     },
     getEnProceso: (connection, body, callback) => {
         connection.query('SELECT * FROM pedidos WHERE Estado != "Entregado"', (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback( results );
+        })
+    },
+    getEnProcesoCompras: (connection, body, callback) => {
+        connection.query('SELECT * FROM compras WHERE Estado != "Recibido"', (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                 return;

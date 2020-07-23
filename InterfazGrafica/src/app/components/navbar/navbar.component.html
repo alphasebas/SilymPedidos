@@ -62,7 +62,7 @@
           <a class="nav-link" [routerLink]="['login']">Usuarios</a>
         </li>
       </ng-container>
-      
+
         <li class="nav-item active ml-0 dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Compras
@@ -71,11 +71,17 @@
           <ng-container *ngIf="Tipo == 'Ventas' || Tipo == 'Admin' || Tipo == 'Facturacion' || Tipo == 'Cobranza'">
             <a class="dropdown-item" [routerLink]="['crearcompras']">Crear Compra</a>
           </ng-container>
+          <ng-container *ngIf="Tipo == 'Admin' || Tipo == 'Compras'">
+            <a class="dropdown-item" [routerLink]="['porPedir']">Por Pedir</a>
+          </ng-container>
+          <ng-container *ngIf="Tipo == 'Admin' || Tipo == 'Almacen'">
+            <a class="dropdown-item" [routerLink]="['porRecibir']">Por Recibir</a>
+          </ng-container>
             <a class="dropdown-item" >En Proceso</a>
             <a class="dropdown-item" >Buscar</a>
           </div>
         </li>
-      
+
     </ul>
     <ng-container *ngIf="Usuario == ''; else logout">
       <button class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal" (click)="mostrar()">

@@ -24,6 +24,8 @@ import {MatInputModule} from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AltaclienteComponent } from './components/altacliente/altacliente.component';
+import { PorpedirComponent } from './components/porpedir/porpedir.component';
+import { PorrecibirComponent } from './components/porrecibir/porrecibir.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { AltaclienteComponent } from './components/altacliente/altacliente.compo
     BuscarComponent,
     CrearcomprasComponent,
     AltaclienteComponent,
+    PorpedirComponent,
+    PorrecibirComponent,
   ],
   imports: [
     BrowserModule,

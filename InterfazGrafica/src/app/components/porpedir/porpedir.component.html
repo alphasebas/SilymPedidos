@@ -1,0 +1,33 @@
+<div class="table-responsive">
+  <table class="table table-striped table-light table-hover table-sm border" >
+    <thead class="thead-dark" >
+      <tr >
+        <th scope="col">FI</th>
+        <th scope="col">Pedido Por</th>
+        <th scope="col">Prov Marca</th>
+        <th scope="col">Estado Actual</th>
+        <th scope="col">RC Pedido</th>
+        <th scope="col">Fecha Deseada</th>
+        <th scope="col">Fecha Estimada</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Cambio de Estado</th>
+      </tr>
+    </thead>
+    <tbody style="border: 1px solid black !important;  border-collapse: collapse !important;">
+      <tr *ngFor="let dato of pendientes, let i=index" >
+        <th scope="row">{{dato.FolioInterno}}</th>
+        <td>{{dato.PedidoPor}}</td>
+        <td>{{dato.ProvMarca}}</td>
+        <td class="table-warning">{{dato.Estado}}</td>
+        <td>{{dato.RCPedido | date : 'short'}}</td>
+        <td>{{dato.FechaDeseada | date : 'shortDate'}}</td>
+        <td><input type="date" style="width: 100px;" #fechaE ></td>
+        <td>{{dato.Tipo}}</td>
+        <td>{{dato.Cliente}}</td>
+        <td><button class="btn btn-success mr-2" #ped value="Pedido" (click)="pedido(fechaE.value,dato.FolioInterno,ped.value)">Pedido</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
