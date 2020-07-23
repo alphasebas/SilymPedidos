@@ -14,15 +14,19 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['/pendientes']"
-          >Pendientes<span class="sr-only">(current)</span></a>
-      </li>
-      <ng-container *ngIf="Tipo == 'Ventas' || Tipo == 'Admin' || Tipo == 'Facturacion'">
+      <ng-container *ngIf="Tipo == 'Ventas' || Tipo == 'Admin' || Tipo == 'Facturacion' || Tipo == 'Cobranza'">
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['crearpedidos']">Crear Pedido</a>
         </li>
+            
       </ng-container>
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['enproceso']">En Proceso</a>
+      </li>
+    <li class="nav-item active">
+      <a class="nav-link" [routerLink]="['/pendientes']"
+        >Pendientes<span class="sr-only">(current)</span></a>
+    </li>
       <ng-container *ngIf="Tipo == 'Cobranza' || Tipo == 'Admin'">
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['autorizacion']">Por Autorizar</a>
@@ -43,9 +47,7 @@
           <a class="nav-link" [routerLink]="['entregados']">Por Entregar</a>
         </li>
       </ng-container>
-      <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['enproceso']">En Proceso</a>
-      </li>
+      
       <li class="nav-item active">
         <a class="nav-link" [routerLink]="['buscar']">Buscar</a>
       </li>
@@ -106,3 +108,4 @@
     </div>
   </div>
 </ng-container>
+

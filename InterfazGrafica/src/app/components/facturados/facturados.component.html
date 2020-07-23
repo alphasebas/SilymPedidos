@@ -4,6 +4,7 @@
       <tr >
         <th scope="col">FI</th>
         <th scope="col">Cliente</th>
+        <th scope="col">Atn</th>
         <th scope="col">Estado</th>
         <th scope="col">Fecha Llegada</th>
         <th scope="col">Orden de Compra</th>
@@ -18,6 +19,7 @@
       <tr *ngFor="let dato of facturados, let i=index" >
         <th scope="row">{{dato.FolioInterno}}</th>
         <td>{{dato.Cliente}}</td>
+        <td>{{dato.Atendido}}</td>
         <td class="table-warning">{{dato.Estado}}</td>
         <td>{{dato.FechaLlegada | date : 'short'}}</td>
         <td>{{dato.OC}}</td>

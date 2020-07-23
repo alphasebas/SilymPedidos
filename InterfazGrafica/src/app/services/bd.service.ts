@@ -5,18 +5,19 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BdService {
-  ip = 'http://192.168.56.1:3000/';
+  ip = 'http://192.168.0.152:3000/';
   usuario: string;
   tipo: string;
   constructor(private httpClient: HttpClient) { }
 
-  crearPedido(cliente: string, fechallegada: string, oc: string, fechadeseada: string, observaciones: string) {
+  crearPedido(cliente: string, fechallegada: string, oc: string, fechadeseada: string, observaciones: string, atendido: string) {
     const body = new HttpParams()
     .set('Cliente', cliente)
     .set('FechaLlegada', fechallegada)
     .set('OC', oc)
     .set('FechaDeseada', fechadeseada)
-    .set('ObservacionesVentas', observaciones);
+    .set('ObservacionesVentas', observaciones)
+    .set('Atendido', atendido);
     return this.httpClient.post(this.ip + 'ventas', body.toString(),
     {
     headers: new HttpHeaders()
@@ -40,7 +41,7 @@ export class BdService {
     .set('FolioInterno', folio)
     .set('Factura', factura)
     .set('Estado', estado);
-    return this.httpClient.put(this.ip + 'factura', body.toString(),
+    return this.httpClient.post(this.ip + 'factura', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')

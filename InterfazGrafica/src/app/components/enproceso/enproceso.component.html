@@ -2,32 +2,41 @@
   <table class="table table-striped table-light table-hover table-sm border" >
     <thead class="thead-dark" >
       <tr >
-        <th scope="col">Folio Interno</th>
+        <th scope="col">FI</th>
         <th scope="col">Cliente</th>
+        <th scope="col">Atn</th>
         <th scope="col">Estado</th>
         <th scope="col">Fecha de Llegada</th>
         <th scope="col">Orden de Compra</th>
+        <th scope="col">Factura</th>
         <th scope="col">Fecha Deseada</th>
         <th scope="col">Observaciones de Ventas</th>
         <th scope="col">Registro de Captura de Ventas</th>
+        
       </tr>
     </thead>
     <tbody style="border: 1px solid black !important;  border-collapse: collapse !important;">
       <tr *ngFor="let dato of enProceso" >
         <th scope="row">{{dato.FolioInterno}}</th>
         <td>{{dato.Cliente}}</td>
+        <td>{{dato.Atendido}}</td>
         <td class="table-warning">{{dato.Estado}}
           <ng-container *ngIf="tipo=='Admin'"><br>
           <button class="btn-success" (click)="PAf(dato.FolioInterno)">PendienteAutorizar</button>
           <button class="btn-primary" (click)="Autorizadof(dato.FolioInterno)">Autorizado</button>
           <button class="btn-info" (click)="Facturadof(dato.FolioInterno)">Facturado</button>
           </ng-container>
+          <ng-container *ngIf="tipo=='Cobranza'"><br>
+            <button class="btn-success" (click)="PAf(dato.FolioInterno)">PendienteAutorizar</button>
+            </ng-container>
         </td>
         <td>{{dato.FechaLlegada | date : 'short'}}</td>
         <td>{{dato.OC}}</td>
+        <td>{{dato.Factura}}</td>
         <td>{{dato.FechaDeseada | date : 'shortDate'}}</td>
         <td>{{dato.ObservacionesVentas}}</td>
         <td>{{dato.RCVentas | date : 'short'}}</td>
+        
       </tr>
     </tbody>
   </table>

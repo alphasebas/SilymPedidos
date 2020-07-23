@@ -1,8 +1,8 @@
 module.exports = {
 
     create: (connection, body, callback) => {
-        connection.query('INSERT INTO pedidos SET Cliente = ?,Estado = "PendienteAutorizar", FechaLlegada = ?,OC = ?, FechaDeseada = ?, ObservacionesVentas = ?,RCVentas = current_timestamp()',
-            [body.Cliente, body.FechaLlegada, body.OC, body.FechaDeseada, body.ObservacionesVentas], (err, results) => {
+        connection.query('INSERT INTO pedidos SET Cliente = ?,Estado = "PendienteAutorizar", FechaLlegada = ?,OC = ?, FechaDeseada = ?, ObservacionesVentas = ?, Atendido = ?,RCVentas = current_timestamp()',
+            [body.Cliente, body.FechaLlegada, body.OC, body.FechaDeseada, body.ObservacionesVentas, body.Atendido], (err, results) => {
                 if (err) {
                     callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
                     return;

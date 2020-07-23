@@ -27,7 +27,8 @@ export class CrearpedidoComponent implements OnInit {
   ngOnInit(): void {
   }
   crear() {
-    this.bdService.crearPedido(this.clientei, this.fechallegada, this.oc, this.fechadeseada, this.observaciones).subscribe(data => {
+    const user = this.bdService.getUsuario();
+    this.bdService.crearPedido(this.clientei, this.fechallegada, this.oc, this.fechadeseada, this.observaciones, user).subscribe(data => {
       alert('Creado Con exito');
       this.limpiar();
     });

@@ -11,6 +11,7 @@ router.post('/ventas', [
     body('OC'),
     body('FechaDeseada').not().isEmpty().isString(),
     body('ObservacionesVentas'),
+    body('Atendido').not().isEmpty().isString()
 
 ], (req, res) => {
     const errors = validationResult(req);
@@ -24,7 +25,7 @@ router.post('/ventas', [
     }))
 });
 
-router.put('/factura', [
+router.post('/factura', [
     body('Estado').not().isEmpty().isString(),
     body('Factura').not().isEmpty().isString(),
     body('FolioInterno').not().isEmpty().isString()

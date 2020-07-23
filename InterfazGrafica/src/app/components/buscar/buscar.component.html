@@ -86,6 +86,7 @@
         <tr *ngFor="let dato of resC" >
           <th scope="row">{{dato.FolioInterno}}
             <ng-container *ngIf="tipo=='Admin'"><br><button class="btn-warning" (click)="modificar(dato.FolioInterno)">Modificar</button></ng-container>
+            <ng-container *ngIf="tipo=='Cobranza'"><br><button class="btn-warning" (click)="modificar(dato.FolioInterno)">Modificar</button></ng-container>
           </th>
           <td>{{dato.Cliente}}<br><button class="btn-success" data-toggle="modal" data-target="#verMas" (click)="botonVer(dato.FolioInterno)">Ver Más</button></td>
           <td>{{dato.FechaLlegada | date : 'short'}}</td>
@@ -173,6 +174,7 @@
                 <tr >
                   <th scope="col">FI</th>
                   <th scope="col">Cliente</th>
+                  <th scope="col">Atn</th>
                   <th scope="col">Estado</th>
                   <th scope="col">Llegada</th>
                   <th scope="col">OC</th>
@@ -198,6 +200,7 @@
                 <tr *ngFor="let dato of resVer" >
                   <th scope="row">{{dato.FolioInterno}}</th>
                   <td>{{dato.Cliente}}</td>
+                  <td>{{dato.Atendido}}</td>
                   <td>{{dato.Estado}}</td>
                   <td>{{dato.FechaLlegada | date : 'short'}}</td>
                   <td>{{dato.OC}}</td>

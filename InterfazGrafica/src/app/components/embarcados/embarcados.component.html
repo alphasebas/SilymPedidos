@@ -1,45 +1,47 @@
 <div class="table-responsive">
-    <table class="table table-striped table-light table-hover table-sm border" >
-      <thead class="thead-dark" >
-        <tr >
-          <th scope="col">FI</th>
-          <th scope="col">Cliente</th>
-          <th scope="col">Estado</th>
-          <th scope="col">Llegada</th>
-          <th scope="col">Fecha Deseada</th>
-          <th scope="col">Obs Ventas</th>
-          <th scope="col">RC Facturado</th>
-          <th scope="col">Factura</th>
-          <th scope="col">Surtió</th>
-          <th scope="col">Obs Almacen</th>
-          <th scope="col">FechaEmb</th>
-          <th scope="col">Chofer</th>
-          <th scope="col">Almacen</th>
-        </tr>
-      </thead>
-      <tbody style="border: 1px solid black !important;  border-collapse: collapse !important;">
-        <tr *ngFor="let dato of embarcados, let i=index" >
-          <th scope="row">{{dato.FolioInterno}}</th>
-          <td>{{dato.Cliente}}</td>
-          {{colores(dato.Estado)}}
-          <td class="table-warning" *ngIf="color=='Amarillo'">{{dato.Estado}}</td>
-            <td class="table-danger" *ngIf="color=='Rojo'">{{dato.Estado}}</td>
-            <td class="table-success" *ngIf="color=='Verde'">{{dato.Estado}}</td>   
-                    
-          <td>{{dato.FechaLlegada | date : 'short'}}</td>
-          <td>{{dato.FechaDeseada | date : 'shortDate'}}</td>
-          <td>{{dato.ObservacionesVentas}}</td>
-          <td>{{dato.RCFactura | date : 'short'}}</td>
-          <td>{{dato.Factura}}</td>
-          <td><input type="text" #surtidor value="{{dato.Surtidor}}" style="width: 80px;"></td>
-          <td><textarea name="obs" cols="15" rows="2" #obs value="{{dato.ObservacionesAlmacen}}"></textarea></td>
-          <td><input type="datetime-local" style="width: 100px;" #fechaE ></td>
-          <td><input type="text" #chofer style="width: 80px;" value="{{dato.Chofer}}"></td>
-          <td><button class="btn btn-info mb-1" (click)="surtidof(surtidor.value,dato.Estado,dato.FolioInterno)">Surtido</button><br>
-              <button class="btn btn-success mb-1" (click)="embarcadof(dato.Estado,surtidor.value, obs.value, fechaE.value, chofer.value ,dato.FolioInterno)">Embarcado</button><br>
-              <button class="btn btn-warning" (click)="parcialf(dato.Estado,surtidor.value, obs.value, fechaE.value, chofer.value ,dato.FolioInterno)">Parcial Embarcado</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-striped table-light table-hover table-sm border" >
+    <thead class="thead-dark" >
+      <tr >
+        <th scope="col">FI</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Atn</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Llegada</th>
+        <th scope="col">Fecha Deseada</th>
+        <th scope="col">Obs Ventas</th>
+        <th scope="col">RC Facturado</th>
+        <th scope="col">Factura</th>
+        <th scope="col">Surtió</th>
+        <th scope="col">Obs Almacen</th>
+        <th scope="col">FechaEmb</th>
+        <th scope="col">Chofer</th>
+        <th scope="col">Almacen</th>
+      </tr>
+    </thead>
+    <tbody style="border: 1px solid black !important;  border-collapse: collapse !important;">
+      <tr *ngFor="let dato of embarcados, let i=index" >
+        <th scope="row">{{dato.FolioInterno}}</th>
+        <td>{{dato.Cliente}}</td>
+        <td>{{dato.Atendido}}</td>
+        {{colores(dato.Estado)}}
+        <td class="table-warning" *ngIf="color=='Amarillo'">{{dato.Estado}}</td>
+          <td class="table-danger" *ngIf="color=='Rojo'">{{dato.Estado}}</td>
+          <td class="table-success" *ngIf="color=='Verde'">{{dato.Estado}}</td>   
+                  
+        <td>{{dato.FechaLlegada | date : 'short'}}</td>
+        <td>{{dato.FechaDeseada | date : 'shortDate'}}</td>
+        <td>{{dato.ObservacionesVentas}}</td>
+        <td>{{dato.RCFactura | date : 'short'}}</td>
+        <td>{{dato.Factura}}</td>
+        <td><input type="text" #surtidor value="{{dato.Surtidor}}" style="width: 80px;"></td>
+        <td><textarea name="obs" cols="15" rows="1" #obs value="{{dato.ObservacionesAlmacen}}"></textarea></td>
+        <td><input type="datetime-local" style="width: 100px;" #fechaE ></td>
+        <td><input type="text" #chofer style="width: 80px;" value="{{dato.Chofer}}"></td>
+        <td><button class="btn btn-info mb-1" (click)="surtidof(surtidor.value,dato.Estado,dato.FolioInterno)">Surtido</button>
+            <button class="btn btn-success mb-1" (click)="embarcadof(dato.Estado,surtidor.value, obs.value, fechaE.value, chofer.value ,dato.FolioInterno)">Embarcado</button>
+            <button class="btn btn-warning" (click)="parcialf(dato.Estado,surtidor.value, obs.value, fechaE.value, chofer.value ,dato.FolioInterno)">Parcial Embarcado</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
