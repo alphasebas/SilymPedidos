@@ -24,9 +24,9 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
-  addCliente(cliente:string){
+  addCliente(cliente: string) {
     const body = new HttpParams()
-    .set('Cliente', cliente)
+    .set('Cliente', cliente);
 
     return this.httpClient.post(this.ip +  'addcliente', body.toString(),
     {
