@@ -92,6 +92,16 @@ module.exports = {
                 callback({ array: null, id: null, success: true });
             });
     },
+    updateenProcesoc: (connection, body, callback) => {
+        connection.query('UPDATE compras SET Estado = ? WHERE FolioInterno = ?',
+            [ body.Estado, body.FolioInterno], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback({ array: null, id: null, success: true });
+            });
+    },
     updatePedidoCompras: (connection, body, callback) => {
         connection.query('UPDATE compras SET FechaEstimada = ?, Estado = ?, RCComprado = current_timestamp() WHERE FolioInterno = ?',
             [body.FechaEstimada, body.Estado, body.FolioInterno], (err, results) => {
@@ -114,6 +124,16 @@ module.exports = {
     },
     modifbuscar: (connection, body, callback) => {
         connection.query('UPDATE pedidos SET Estado = "Modificar" WHERE FolioInterno = ?',
+            [body.FolioInterno], (err, results) => {
+                if (err) {
+                    callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                    return;
+                }
+                callback({ array: null, id: null, success: true });
+            });
+    },
+    modifbuscarc: (connection, body, callback) => {
+        connection.query('UPDATE compras SET Estado = "Modificar" WHERE FolioInterno = ?',
             [body.FolioInterno], (err, results) => {
                 if (err) {
                     callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
@@ -145,6 +165,16 @@ module.exports = {
 
     getFechaLLegada: (connection, body, callback) => {
         connection.query('SELECT * FROM pedidos WHERE FechaLlegada > ? && FechaLLegada < ?',
+        [body.FechaDe, body.FechaHasta], (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback( results );
+        })
+    },
+    getFechaLLegadaCompras: (connection, body, callback) => {
+        connection.query('SELECT * FROM compras WHERE FechaLlegada > ? && FechaLLegada < ?',
         [body.FechaDe, body.FechaHasta], (err, results) => {
             if (err) {
                 callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
@@ -185,6 +215,16 @@ module.exports = {
             callback( results );
         })
     },
+    getFolioC:(connection, body, callback) => {
+        connection.query('SELECT * FROM compras WHERE FolioInterno = ? ',
+        [body.FolioInterno], (err, results) => {
+            if (err) {
+                callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+                return;
+            }
+            callback( results );
+        })
+    },
     getTodosClientes:(connection, body, callback) => {
         connection.query('SELECT * FROM clientes', (err, results) => {
             if (err) {
@@ -205,6 +245,16 @@ module.exports = {
           callback( results );
       })
   },
+  getProv:(connection, body, callback) => {
+    connection.query('SELECT * FROM compras WHERE ProvMarca = ? ',
+    [body.ProvMarca], (err, results) => {
+        if (err) {
+            callback({ array: null, id: null, success: false, err: JSON.stringify(err) });
+            return;
+        }
+        callback( results );
+    })
+},
     getPendientes: (connection, body, callback) => {
         connection.query('SELECT * FROM pedidos WHERE Estado = "PendienteAutorizar" || Estado = "ParcialFacturado" || Estado = "ParcialEmbarcado"', (err, results) => {
             if (err) {

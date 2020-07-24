@@ -104,6 +104,16 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
+  updateenProcesoc(folio: string, estado: string) {
+    const body = new HttpParams()
+    .set('FolioInterno', folio)
+    .set('Estado', estado);
+    return this.httpClient.post(this.ip + 'procesoc', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
   parcialEmbarcado(folio: string, estado: string, surtidor: string, chofer: string, obsAlmacen: string,
                    embarcador: string, fechaembarcada: string) {
     const body = new HttpParams()
@@ -148,6 +158,15 @@ export class BdService {
     const body = new HttpParams()
     .set('FolioInterno', folio);
     return this.httpClient.post(this.ip + 'modifbuscar', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+  modifbuscarC(folio: string) {
+    const body = new HttpParams()
+    .set('FolioInterno', folio);
+    return this.httpClient.post(this.ip + 'modifbuscarc', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -241,10 +260,28 @@ export class BdService {
     .set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
+  getFolioC(folio: string) {
+    const body = new HttpParams()
+    .set('FolioInterno', folio);
+    return this.httpClient.post(this.ip + 'folioc', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
   getCliente(cliente: string) {
     const body = new HttpParams()
     .set('Cliente', cliente);
     return this.httpClient.post(this.ip + 'cliente', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+  getProv(prov: string) {
+    const body = new HttpParams()
+    .set('ProvMarca', prov);
+    return this.httpClient.post(this.ip + 'prov', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -255,6 +292,16 @@ export class BdService {
     .set('FechaDe', fechaDe)
     .set('FechaHasta', fechaHasta);
     return this.httpClient.post(this.ip + 'fechasentregados', body.toString(),
+    {
+    headers: new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+  getFechaLlegada(fechaDe: string, fechaHasta: string) {
+    const body = new HttpParams()
+    .set('FechaDe', fechaDe)
+    .set('FechaHasta', fechaHasta);
+    return this.httpClient.post(this.ip + 'fechallegada', body.toString(),
     {
     headers: new HttpHeaders()
     .set('Content-Type', 'application/x-www-form-urlencoded')

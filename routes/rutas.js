@@ -149,6 +149,21 @@ router.post('/proceso', [
         res.json(data);
     }))
 });
+router.post('/procesoc', [
+    body('FolioInterno').not().isEmpty().isString(),
+    body('Estado').not().isEmpty().isString(),
+    
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.updateenProcesoc(connection, body, (data => {
+        res.json(data);
+    }))
+});
 router.post('/modifbuscar', [
     body('FolioInterno').not().isEmpty().isString(),    
 ], (req, res) => {
@@ -159,6 +174,19 @@ router.post('/modifbuscar', [
     }
     let body = req.body;
     user.modifbuscar(connection, body, (data => {
+        res.json(data);
+    }))
+});
+router.post('/modifbuscarc', [
+    body('FolioInterno').not().isEmpty().isString(),    
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.modifbuscarc(connection, body, (data => {
         res.json(data);
     }))
 });
@@ -416,6 +444,19 @@ router.post('/folio', [
         res.json(data);
     }))
 });
+router.post('/folioc', [
+    body('FolioInterno')
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getFolioC(connection, body, (data => {
+        res.json(data);
+    }))
+});
 router.post('/cliente', [
     body('Cliente')
 ], (req, res) => {
@@ -426,6 +467,19 @@ router.post('/cliente', [
     }
     let body = req.body;
     user.getCliente(connection, body, (data => {
+        res.json(data);
+    }))
+});
+router.post('/prov', [
+    body('ProvMarca')
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getProv(connection, body, (data => {
         res.json(data);
     }))
 });
@@ -453,6 +507,20 @@ router.post('/fechasentregados', [
     }
     let body = req.body;
     user.getFechaEntregado(connection, body, (data => {
+        res.json(data);
+    }))
+});
+router.post('/fechallegada', [
+    body('FechaDe'),
+    body('FechaHasta')
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.json({ success: false, err: JSON.stringify(errors) })
+        return
+    }
+    let body = req.body;
+    user.getFechaLLegadaCompras(connection, body, (data => {
         res.json(data);
     }))
 });

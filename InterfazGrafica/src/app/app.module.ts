@@ -28,6 +28,7 @@ import { AltaclienteComponent } from './components/altacliente/altacliente.compo
 import { PorpedirComponent } from './components/porpedir/porpedir.component';
 import { PorrecibirComponent } from './components/porrecibir/porrecibir.component';
 import { EnprocesocomprasComponent } from './components/enprocesocompras/enprocesocompras.component';
+import { BuscarcomprasComponent } from './components/buscarcompras/buscarcompras.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { EnprocesocomprasComponent } from './components/enprocesocompras/enproce
     PorpedirComponent,
     PorrecibirComponent,
     EnprocesocomprasComponent,
+    BuscarcomprasComponent,
   ],
   imports: [
     BrowserModule,

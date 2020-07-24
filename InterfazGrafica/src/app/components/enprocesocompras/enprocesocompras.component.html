@@ -19,7 +19,12 @@
         <th scope="row">{{dato.FolioInterno}}</th>
         <td>{{dato.PedidoPor}}</td>
         <td>{{dato.ProvMarca}}</td>
-        <td class="table-warning">{{dato.Estado}}</td>
+        <td class="table-warning">{{dato.Estado}}
+          <ng-container *ngIf="tipo=='Admin'"><br>
+            <button class="btn-success" (click)="Pendiente(dato.FolioInterno)">Pendiente</button>
+            <button class="btn-primary" (click)="Pedido(dato.FolioInterno)">Pedido</button>
+            </ng-container>
+        </td>
         <td>{{dato.RCPedido | date : 'short'}}</td>
         <td>{{dato.RCComprado | date : 'short'}}</td>
         <td>{{dato.FechaEstimada | date : 'shortDate'}}</td>

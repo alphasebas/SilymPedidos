@@ -15,6 +15,7 @@ import { AltaclienteComponent } from './components/altacliente/altacliente.compo
 import { PorpedirComponent } from './components/porpedir/porpedir.component';
 import { PorrecibirComponent } from './components/porrecibir/porrecibir.component';
 import { EnprocesocomprasComponent } from './components/enprocesocompras/enprocesocompras.component';
+import { BuscarcomprasComponent } from './components/buscarcompras/buscarcompras.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'enproceso', component: EnprocesoComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'buscar', component: BuscarComponent },
+  { path: 'buscarcompras', component: BuscarcomprasComponent },
   {path: '**', pathMatch: 'full', redirectTo: '#'}
 ];
 
